@@ -10,6 +10,8 @@
   <br><br>
   <h2 align="center">Happy casting</h2>
   <script type="text/javascript">
+    cast.framework.CastReceiverContext.getInstance().setLoggerLevel(cast.framework.LoggerLevel.DEBUG);
+
     cast.framework.CastReceiverContext.getInstance().start();
     window.onload = function() {
         //loadSounds();
