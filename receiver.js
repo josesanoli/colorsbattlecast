@@ -14,6 +14,7 @@
         context.addCustomMessageListener(CUSTOM_CHANNEL, customEvent => {
             console.log('addCustomMessageListener:');
             console.log(customEvent);
+            element.innerHTML = customEvent.data;
         });
         context.start();
         
