@@ -1,3 +1,14 @@
+body {
+    background-color: #aaaaff;
+}
+h1 {
+    text-align: center;
+    color: blue;
+}
+h2 {
+    text-align: center;
+    color: red;
+}
 .text {
     position: relative;
     top: 50%;
