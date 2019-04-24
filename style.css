@@ -8,7 +8,7 @@ body {
 }
 @font-face {
     font-family: "Lato-Regular";
-    src: url("lato/Lato-Regular.ttf");
+    src: url("fonts/Lato-Regular.ttf");
 }
 h1 {
     text-align: center;
