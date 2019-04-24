@@ -1,0 +1,7 @@
+.text {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size:6em;
+    color: #ddd;
+}
