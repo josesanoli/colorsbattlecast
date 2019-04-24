@@ -27,6 +27,7 @@
         //context.start();
         
         const options = new cast.framework.CastReceiverOptions();
+        options.customNamespaces = Object.assign({});
         options.customNamespaces[CUSTOM_CHANNEL] = cast.framework.system.MessageType.STRING;
         //options.customNamespaces = {
         //    [CUSTOM_CHANNEL]: cast.framework.system.MessageType.STRING
