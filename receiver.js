@@ -11,12 +11,13 @@
         //element.innerHTML = "Subtitle changed";
         
         const CUSTOM_CHANNEL = 'urn:x-cast:es.jolusan.colorsbattlecast';
-        context.addCustomMessageListener(CUSTOM_CHANNEL, function(customEvent) {
+        context.addCustomMessageListener(CUSTOM_CHANNEL, customEvent => {
             console.log('addCustomMessageListener:');
             console.log(customEvent);
         });
-        //context.start();
-        const options = new cast.framework.CastReceiverOptions();
+        context.start();
+        
+        /*const options = new cast.framework.CastReceiverOptions();
         options.customNamespaces = {
             [CUSTOM_CHANNEL]: cast.framework.system.MessageType.JSON
         };
@@ -29,7 +30,7 @@
           };
         
         context.sendCustomMessage(CUSTOM_CHANNEL, objToSender);
-
+*/
         
         
         /*const CHANNEL = 'urn:x-cast:es.jolusan.colorsbattlecast';
