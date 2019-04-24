@@ -15,7 +15,19 @@
             console.log('addCustomMessageListener:');
             console.log(customEvent);
         });
-        context.start();
+        //context.start();
+        const options = cast.framework.CastReceiverOptions();
+        options.customNamespaces = {
+            [CUSTOM_CHANNEL]: cast.framework.system.MessageType.JSON
+        };
+        context.start(options);
+
+        context.sendCustomMessage(CUSTOM_CHANNEL, {
+          type: 'status'
+          message: 'message from js'
+        });
+
+        
         
         /*const CHANNEL = 'urn:x-cast:es.jolusan.colorsbattlecast';
         const options = new cast.framework.CastReceiverOptions();
