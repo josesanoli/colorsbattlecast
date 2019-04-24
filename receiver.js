@@ -12,11 +12,11 @@
         context.addCustomMessageListener(CUSTOM_CHANNEL, customEvent => {
             console.log('addCustomMessageListener:');
             console.log(customEvent);
-            element.innerHTML = customEvent.data;
+            element.innerHTML = customEvent.data.value;
            const objToSender = 
               {
                 type: 'status',
-                message: 'Received: ' + customEvent.data
+                message: 'Received: ' + customEvent.data.value
               };
 
             context.sendCustomMessage(CUSTOM_CHANNEL, undefined, objToSender);
