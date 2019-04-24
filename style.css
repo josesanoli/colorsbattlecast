@@ -38,7 +38,7 @@ h2 {
   }
   section {
       height: 100%;
-      align-content: flex-start;
+      align-content: flex-end;
   }
   section div {
     float: right;
