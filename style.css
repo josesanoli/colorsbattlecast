@@ -38,11 +38,14 @@ h2 {
   }
   section {
       height: 100%;
-      align-content: flex-end
+      align-content: flex-start;
   }
   section div {
     float: right;
     height: 21%;
-    padding-left: 21%;
-    margin:1%;
+    padding-right: 21%;
+    margin:0%;
+    border-style: solid;
+    border-width: 1%;
+    border-color: white;
 }
