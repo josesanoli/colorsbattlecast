@@ -10,7 +10,14 @@
         var element = document.getElementById("subtitle");
         //element.innerHTML = "Subtitle changed";
         
-        const CHANNEL = 'urn:x-cast:es.jolusan.colorsbattlecast';
+        const CUSTOM_CHANNEL = 'urn:x-cast:es.jolusan.colorsbattlecast';
+        context.addCustomMessageListener(CUSTOM_CHANNEL, function(customEvent) {
+            console.log('addCustomMessageListener:');
+            console.log(customEvent);
+        });
+        context.start();
+        
+        /*const CHANNEL = 'urn:x-cast:es.jolusan.colorsbattlecast';
         const options = new cast.framework.CastReceiverOptions();
           const objToSender = 
           {
@@ -28,7 +35,7 @@
       context.sendCustomMessage(CHANNEL, objToSender);
 
       context.start(options);
-        
+        */
         /*
         window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
         
