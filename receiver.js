@@ -7,7 +7,7 @@
     //cast.framework.CastReceiverContext.getInstance().start();
     global.onload = function() {
         console.log('starting the receiver application');
-        //cast.receiver.logger.setLevelValue(cast.receiver.LoggerLevel.DEBUG);
+        /*
         window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
         
         castReceiverManager.onReady = function(event) {
@@ -35,6 +35,7 @@
         }
         // initialize the CastReceiverManager with an application status message
         window.castReceiverManager.start({statusText: 'Application is starting'});
+        */
         console.log('Receiver Manager started');
     };
  // "use strict";
