@@ -15,23 +15,25 @@
             console.log('addCustomMessageListener:');
             console.log(customEvent);
             element.innerHTML = customEvent.data;
+            const objToSender = 
+              {
+                type: 'status',
+                message: 'Playing'
+              };
+
+            context.sendCustomMessage(CUSTOM_CHANNEL, objToSender);
         });
-        context.start();
         
-        /*const options = new cast.framework.CastReceiverOptions();
+        //context.start();
+        
+        const options = new cast.framework.CastReceiverOptions();
         options.customNamespaces = {
             [CUSTOM_CHANNEL]: cast.framework.system.MessageType.JSON
         };
         context.start(options);
 
-        const objToSender = 
-          {
-            type: 'status',
-            message: 'Playing'
-          };
         
-        context.sendCustomMessage(CUSTOM_CHANNEL, objToSender);
-*/
+
         
         
         /*const CHANNEL = 'urn:x-cast:es.jolusan.colorsbattlecast';
