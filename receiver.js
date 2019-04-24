@@ -21,15 +21,16 @@
                 message: 'Playing'
               };
 
-            context.sendCustomMessage(CUSTOM_CHANNEL, objToSender);
+            context.sendCustomMessage(CUSTOM_CHANNEL, "test message");
         });
         
         //context.start();
         
         const options = new cast.framework.CastReceiverOptions();
-        options.customNamespaces = {
-            [CUSTOM_CHANNEL]: cast.framework.system.MessageType.JSON
-        };
+        options.customNamespaces[CUSTOM_CHANNEL] = cast.framework.system.MessageType.STRING;
+        //options.customNamespaces = {
+        //    [CUSTOM_CHANNEL]: cast.framework.system.MessageType.STRING
+        //};
         context.start(options);
 
         
