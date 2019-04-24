@@ -16,7 +16,7 @@
             console.log(customEvent);
         });
         //context.start();
-        const options = cast.framework.CastReceiverOptions();
+        const options = new cast.framework.CastReceiverOptions();
         options.customNamespaces = {
             [CUSTOM_CHANNEL]: cast.framework.system.MessageType.JSON
         };
