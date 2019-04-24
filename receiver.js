@@ -6,7 +6,7 @@
     
     global.onload = function() {
         console.log('starting the receiver application');
-        var element = global/document.getElementById("subtitle");
+        var element = document.getElementById("subtitle");
         element.innerHTML = "Subtitle changed";
         /*
         window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
