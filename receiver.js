@@ -20,8 +20,12 @@
               };
 
             context.sendCustomMessage(CUSTOM_CHANNEL, undefined, objToSender);
-            var cell = document.getElementById("cellA4");
-            cell.style.backgroundColor = "#"+customEvent.data;
+            document.getElementById("cellA2").style.backgroundColor = "#"+customEvent.data;
+            document.getElementById("cellB1").style.backgroundColor = "#"+customEvent.data;
+            document.getElementById("cellC3").style.backgroundColor = "#"+customEvent.data;
+            document.getElementById("cellD3").style.backgroundColor = "#"+customEvent.data;
+            document.getElementById("cellD4").style.backgroundColor = "#"+customEvent.data;
+         
         });
         
         const options = new cast.framework.CastReceiverOptions();
