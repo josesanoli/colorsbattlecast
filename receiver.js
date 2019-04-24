@@ -4,12 +4,12 @@ var context = cast.framework.CastReceiverContext.getInstance();
     var playerManager = context.getPlayerManager();
     context.start();
     cast.framework.CastReceiverContext.getInstance().setLoggerLevel(cast.framework.LoggerLevel.DEBUG);
-    cast.framework.CastReceiverContext.getInstance().start();
+    //cast.framework.CastReceiverContext.getInstance().start();
     global.onload = function() {
-        
+        console.log('starting the receiver application');
         cast.receiver.logger.setLevelValue(cast.receiver.LoggerLevel.DEBUG);
         window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
-        console.log('starting the receiver application');
+        
         castReceiverManager.onReady = function(event) {
             console.log('receiver application is ready: ' + JSON.stringify(event.data));
             window.castReceiverManager.setApplicationState('Application status is ready...');
