@@ -1,12 +1,13 @@
 (function (global) {
 
     var context = cast.framework.CastReceiverContext.getInstance();
-    //var playerManager = context.getPlayerManager();
     context.start();
     cast.framework.CastReceiverContext.getInstance().setLoggerLevel(cast.framework.LoggerLevel.DEBUG);
-    //cast.framework.CastReceiverContext.getInstance().start();
+    
     global.onload = function() {
         console.log('starting the receiver application');
+        var element = global/document.getElementById("subtitle");
+        element.innerHTML = "Subtitle changed";
         /*
         window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
         
