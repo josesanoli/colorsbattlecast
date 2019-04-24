@@ -1,13 +1,34 @@
 (function (global) {
 
-    var context = cast.framework.CastReceiverContext.getInstance();
-    context.start();
+    
     cast.framework.CastReceiverContext.getInstance().setLoggerLevel(cast.framework.LoggerLevel.DEBUG);
     
     global.onload = function() {
+        var context = cast.framework.CastReceiverContext.getInstance();
+        
         console.log('starting the receiver application');
         var element = document.getElementById("subtitle");
-        element.innerHTML = "Subtitle changed";
+        //element.innerHTML = "Subtitle changed";
+        
+        const CHANNEL = 'urn:x-cast:es.jolusan.colorsbattlecast';
+        const options = new cast.framework.CastReceiverOptions();
+          const objToSender = 
+          {
+            type: 'status',
+            message: 'Playing'
+          };
+
+         options.customNamespaces = Object.assign({});
+         options.customNamespaces[CHANNEL] = cast.framework.system.MessageType.JSON;
+
+      //receiving sender message
+      context.addCustomMessageListener(CHANNEL,  customEvent => element.innerHTML = customEvent.data.msg);
+
+      //message to sender app
+      context.sendCustomMessage(CHANNEL, objToSender);
+
+      context.start(options);
+        
         /*
         window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
         
