@@ -22,10 +22,13 @@
         };
         context.start(options);
 
-        context.sendCustomMessage(CUSTOM_CHANNEL, {
-          type: 'status'
-          message: 'message from js'
-        });
+        const objToSender = 
+          {
+            type: 'status',
+            message: 'Playing'
+          };
+        
+        context.sendCustomMessage(CUSTOM_CHANNEL, objToSender);
 
         
         
