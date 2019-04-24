@@ -1,13 +1,13 @@
 (function (global) {
 
-var context = cast.framework.CastReceiverContext.getInstance();
-    var playerManager = context.getPlayerManager();
+    var context = cast.framework.CastReceiverContext.getInstance();
+    //var playerManager = context.getPlayerManager();
     context.start();
     cast.framework.CastReceiverContext.getInstance().setLoggerLevel(cast.framework.LoggerLevel.DEBUG);
     //cast.framework.CastReceiverContext.getInstance().start();
     global.onload = function() {
         console.log('starting the receiver application');
-        cast.receiver.logger.setLevelValue(cast.receiver.LoggerLevel.DEBUG);
+        //cast.receiver.logger.setLevelValue(cast.receiver.LoggerLevel.DEBUG);
         window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
         
         castReceiverManager.onReady = function(event) {
