@@ -20,11 +20,9 @@
               };
 
             context.sendCustomMessage(CUSTOM_CHANNEL, undefined, objToSender);
-            document.getElementById("cellA2").style.backgroundColor = "#"+customEvent.data;
-            document.getElementById("cellB1").style.backgroundColor = "#"+customEvent.data;
-            document.getElementById("cellC3").style.backgroundColor = "#"+customEvent.data;
-            document.getElementById("cellD3").style.backgroundColor = "#"+customEvent.data;
-            document.getElementById("cellD4").style.backgroundColor = "#"+customEvent.data;
+            if (customEvent.data.action == "color_cell"){
+              document.getElementById(customEvent.data.key).style.backgroundColor = customEvent.data.value;
+            }
          
         });
         
