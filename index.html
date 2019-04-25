@@ -1,50 +1,63 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-   <link rel="stylesheet" href="style.css"/>
-  <script type="text/javascript"
-      src="//www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js">
+  <link rel="stylesheet" href="style.css" />
+  <script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js">
   </script>
 </head>
-<body>
-   <div id="title_view" >
-        <h1 id="title">Colors BattleCast</h1>
-        <h2 id="subtitle">Press send in device</h2>
-    </div>
-  <div id="game_view" >
 
-    <div id="game_board">
-        <section>
-            <!-- 1st row */ -->
-            <div id="cellD1"></div>
-            <div id="cellC1"></div>
-            <div id="cellB1"></div>
-            <div id="cellA1"></div>
-            <!-- 2nd row */ -->
-            <div id="cellD2"></div>
-            <div id="cellC2"></div>
-            <div id="cellB2"></div>
-            <div id="cellA2"></div>
-            <!-- 3rd row */ -->
-            <div id="cellD3"></div>
-            <div id="cellC3"></div>
-            <div id="cellB3"></div>
-            <div id="cellA3"></div>
-            <!-- 4rd row */ -->
-            <div id="cellD4"></div>
-            <div id="cellC4"></div>
-            <div id="cellB4"></div>
-            <div id="cellA4"></div>
-        </section>
+<body>
+  <div id="info_view">
+    <div id="title_view">
+      <h1 id="title">Colors BattleCast</h1>
+      <h3 id="subtitle">Waiting players</h3>
+      <h2 id="subtitle2">Game code: </h2>
     </div>
 
     <div id="game_players">
-        Players scores:
+        <h2>Players</h2>
+        <div class= "player_row" id="slot_0">
+            <div class="circle">
+                <div id="player_0_color">
+                </div>
+              </div>
+            <h4 id="player_0_name">Player 1</h4>
+            <div class="player_points">
+                <h4 id="player_0_score">100</h4>
+            </div>
+        </div>
     </div>
-</div>
-   
-   
+  </div>
+
+  <div id="game_board">
+    <section>
+      <!-- 1st row */ -->
+      <div id="cellD1"></div>
+      <div id="cellC1"></div>
+      <div id="cellB1"></div>
+      <div id="cellA1"></div>
+      <!-- 2nd row */ -->
+      <div id="cellD2"></div>
+      <div id="cellC2"></div>
+      <div id="cellB2"></div>
+      <div id="cellA2"></div>
+      <!-- 3rd row */ -->
+      <div id="cellD3"></div>
+      <div id="cellC3"></div>
+      <div id="cellB3"></div>
+      <div id="cellA3"></div>
+      <!-- 4rd row */ -->
+      <div id="cellD4"></div>
+      <div id="cellC4"></div>
+      <div id="cellB4"></div>
+      <div id="cellA4"></div>
+    </section>
+  </div>
+
+
   <script type="text/javascript" src="receiver.js"></script>
-  
+
 </body>
+
 </html>
