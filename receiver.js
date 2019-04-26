@@ -24,7 +24,7 @@
             
             } else if (action.startsWith("player_")){
               if (key != ""){
-                document.getElementById(action + "_slot").style.display = "block";
+                document.getElementById(action + "_slot").style.display = "flex";
                 document.getElementById(action + "_name").innerHTML = key;
                 document.getElementById(action + "_color").style.backgroundColor = value;
                 document.getElementById(action + "_score").innerHTML = "0";
