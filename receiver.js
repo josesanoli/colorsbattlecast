@@ -18,7 +18,8 @@
             let value = String(customEvent.data.value);
 
             if (action == "init_screen"){
-              document.getElementById("subtitle2").innerHTML = "Game code: " + value;
+              document.getElementById("subtitle").innerHTML = key;
+              document.getElementById("subtitle2").innerHTML = value;
             
             } else if (action.startsWith("player_")){
               if (key != ""){
@@ -36,7 +37,8 @@
           
             } else if (action == "update_player_score"){
               document.getElementById(key + "_score").innerHTML = value;
-          
+              checkBestScore();
+              
             } else if (action == "change_cell_color"){
               if (value != "alpha"){
                 document.getElementById(key).style.backgroundColor = value;
@@ -73,6 +75,31 @@
         let slotId = "player_" + i + "_slot";
         document.getElementById(slotId).style.display = "none";
       }
+    }
+
+    function checkBestScore(){
+      var arr = new Array(8);
+      var i;
+      var maxScore = 0;
+      for (i = 0; i < 8; i++) { 
+        let playerScore = "player_" + i + "_score";
+        arr[i] = parseInt(document.getElementById(playerScore).innerText);
+        if (arr[i] > maxScore){
+          maxScore = arr[i];
+        }
+      } 
+      for (i = 0; i < 8; i++) {
+        let playerScore = "player_" + i + "_score";
+        let playerName = "player_" + i + "_name";
+        if (arr[i] == maxScore){
+          document.getElementById(playerName).style.color = "#ff0000";
+          document.getElementById(playerScore).style.color = "#ff0000";
+        } else {
+          document.getElementById(playerName).style.color = "#eeeeee";
+          document.getElementById(playerScore).style.color = "#ff0000";
+        }
+      }
+
     }
 
 }(this));
