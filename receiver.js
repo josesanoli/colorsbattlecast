@@ -96,7 +96,7 @@
           document.getElementById(playerScore).style.color = "#ff0000";
         } else {
           document.getElementById(playerName).style.color = "#eeeeee";
-          document.getElementById(playerScore).style.color = "#eeeeee";
+          document.getElementById(playerScore).style.color = "#222222";
         }
       }
 
