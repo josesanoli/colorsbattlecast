@@ -49,6 +49,7 @@
             } else if (action == "finish_screen"){
               document.getElementById("subtitle").innerHTML = key;
               document.getElementById("subtitle2").innerHTML = value;
+                
             }
          
             //Send message received to device
@@ -99,7 +100,6 @@
           document.getElementById(playerScore).style.color = "#222222";
         }
       }
-
     }
 
 }(this));
