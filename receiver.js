@@ -41,8 +41,8 @@
               document.getElementById(key).style.backgroundColor = value;
             
             } else if (action == "finish_screen"){
-              document.getElementById("subtitle").innerHTML = "Game over!: ";
-              document.getElementById("subtitle2").innerHTML = "Winner: " + value;
+              document.getElementById("subtitle").innerHTML = key;
+              document.getElementById("subtitle2").innerHTML = value;
             }
          
             //Send message received to device
