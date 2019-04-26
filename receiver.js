@@ -38,7 +38,7 @@
             } else if (action == "update_player_score"){
               document.getElementById(key + "_score").innerHTML = value;
               checkBestScore();
-              
+
             } else if (action == "change_cell_color"){
               if (value != "alpha"){
                 document.getElementById(key).style.backgroundColor = value;
@@ -96,7 +96,7 @@
           document.getElementById(playerScore).style.color = "#ff0000";
         } else {
           document.getElementById(playerName).style.color = "#eeeeee";
-          document.getElementById(playerScore).style.color = "#ff0000";
+          document.getElementById(playerScore).style.color = "#eeeeee";
         }
       }
 
