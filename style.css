@@ -48,24 +48,6 @@ h4 {
     justify-content: center;
     margin-bottom: 8px;
 }
-/*.player_row div{
-    width: 15%;
-    border-radius: 10px;
-    border-width: 1%;
-    background: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.row_borders div{
-    position: absolute;
-   background: #e34567;
-   border-radius: 50%;
-   height: 100%;
-   width: 100%;
-   top: 50%;
-   left: 50%;
-}*/
 .row_circle {
     background: white;
     border-radius: 10px;
@@ -79,7 +61,6 @@ h4 {
     border-radius: 50%;
     width: 40%;
     padding-bottom: 40%;
-    
     background: red;
 }
 .player_name {
