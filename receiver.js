@@ -5,8 +5,6 @@
     
     global.onload = function() {
 
-        //hideAllPlayers();
-
         var context = cast.framework.CastReceiverContext.getInstance();
         
         console.log('starting the receiver application');

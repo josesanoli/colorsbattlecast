@@ -2,7 +2,7 @@ body {
     height: 100%;
     margin: 3%;
     font-family: 'Lato-Regular';
-    background: #A7F2FB;
+    background: #060001;
     display: flex;
 }
 @font-face {
@@ -11,21 +11,21 @@ body {
 }
 h1 {
     text-align: center;
-    color: #333333;
+    color: #dddddd;
     font-size:2.5vw;
 }
 h2 {
     text-align: center;
-    color: #555555;
+    color: #cccccc;
     font-size:2vw;
 }
 h3 {
     text-align: center;
-    color: #444444;
+    color: #aaaaaa;
     font-size:1.5vw;
 }
 h4 {
-    color: #222222;
+    color: #eeeeee;
     font-size:1.5vw;
 }
 #info_view {
@@ -44,12 +44,12 @@ h4 {
 .player_row{
     height: 5vh;
     width: 100%;
-    display: none;
+    display: flex;
     justify-content: center;
     margin-bottom: 8px;
 }
 .row_circle {
-    background: white;
+    background: #ddddff;
     border-radius: 10px;
     height: 100%;
     width: 12%;
@@ -57,12 +57,7 @@ h4 {
     justify-content: center;
     align-items: center; 
   }
-.row_circle div{
-    border-radius: 50%;
-    width: 40%;
-    padding-bottom: 40%;
-    background: red;
-}
+
 .player_name {
     width: 40%;
     margin-left: 12px;
@@ -70,13 +65,16 @@ h4 {
     align-items: center; 
 }
 .row_score {
-    background: white;
+    background: #ddddff;
     border-radius: 10px;
     height: 100%;
     width: 15%;
     display: flex;
     justify-content: center;
     align-items: center; 
+}
+.row_score h4{
+    color: #222222;
 }
 
   #game_board {
@@ -95,5 +93,5 @@ h4 {
     margin:1%;
     border-radius: 25px;
     border-width: 1%;
-    background: white;
+    background: #ddddff;
 }
