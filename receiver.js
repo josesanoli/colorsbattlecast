@@ -16,16 +16,22 @@
             console.log('addCustomMessageListener:' + customEvent);
             
             let action = String(customEvent.data.action);
-            let key = customEvent.data.key;
-            let value = customEvent.data.value;
+            let key = String(customEvent.data.key);
+            let value = String(customEvent.data.value);
 
             if (action == "init_screen"){
               document.getElementById("subtitle2").innerHTML = "Game code: " + value;
             
             } else if (action.startsWith("player_")){
-              document.getElementById(action + "_slot").style.display = "block";
-              document.getElementById(action + "_name").innerHTML = key;
-              document.getElementById(action + "_color").style.backgroundColor = value;
+              if (key != ""){
+                document.getElementById(action + "_slot").style.display = "block";
+                document.getElementById(action + "_name").innerHTML = key;
+                document.getElementById(action + "_color").style.backgroundColor = value;
+                document.getElementById(action + "_score").innerHTML = "0";
+              } else {
+                document.getElementById(action + "_slot").style.display = "none";
+              }
+
             } else if (action == "set_time"){
               document.getElementById("subtitle").innerHTML = "Time to play";
               document.getElementById("subtitle2").innerHTML = value;
@@ -41,8 +47,6 @@
               document.getElementById("subtitle2").innerHTML = "Winner: " + value;
             }
          
-
-
             //Send message received to device
             const objToSender = 
                 {
@@ -66,8 +70,6 @@
       for (i = 0; i < 8; i++) { 
         let slotId = "player_" + i + "_slot";
         document.getElementById(slotId).style.display = "none";
-        //document.getElementById(slotId).style.display = "block";//to show
-
       }
     }
 
