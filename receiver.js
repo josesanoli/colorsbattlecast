@@ -4,7 +4,7 @@
     cast.framework.CastReceiverContext.getInstance().setLoggerLevel(cast.framework.LoggerLevel.DEBUG);
     
     global.onload = function() {
-
+      
         var context = cast.framework.CastReceiverContext.getInstance();
         
         console.log('starting the receiver application');
@@ -38,7 +38,11 @@
               document.getElementById(key + "_score").innerHTML = value;
           
             } else if (action == "change_cell_color"){
-              document.getElementById(key).style.backgroundColor = value;
+              if (value != "alpha"){
+                document.getElementById(key).style.backgroundColor = value;
+              } else {
+                document.getElementById(key).style.opacity = "0.6";
+              }
             
             } else if (action == "finish_screen"){
               document.getElementById("subtitle").innerHTML = key;
