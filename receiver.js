@@ -94,7 +94,7 @@
         let playerName = "player_" + i + "_name";
         if (arr[i] == maxScore){
           document.getElementById(playerName).style.color = "#a67c00";
-          document.getElementById(playerScore).style.color = "#a67c00";
+          document.getElementById(playerScore).style.color = "#4E4637";
         } else {
           document.getElementById(playerName).style.color = "#eeeeee";
           document.getElementById(playerScore).style.color = "#222222";
