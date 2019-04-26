@@ -71,14 +71,15 @@ h4 {
     border-radius: 10px;
     height: 100%;
     width: 12%;
-    
+    display: flex;
+    justify-content: center;
+    align-items: center; 
   }
 .row_circle div{
     border-radius: 50%;
     width: 40%;
     padding-bottom: 40%;
-    margin-top: 10%;
-    margin-left: 30%;
+    
     background: red;
 }
 .player_name {
