@@ -9,6 +9,7 @@
   const MSG_SET_TIME = "set_time";
   const MSG_PLAYER_SCORE = "player_score";
   const MSG_CELL_COLOR = "cell_color";
+  const MSG_ALPHA = "alpha";
   const MSG_FINISH_SCREEN = "finish_screen";
 
   // Cast
@@ -79,7 +80,7 @@
               checkBestScore();
 
             } else if (action == MSG_CELL_COLOR){
-              if (value != "alpha"){
+              if (value != MSG_ALPHA){
                 document.getElementById(key).style.backgroundColor = value;
               } else {
                 document.getElementById(key).style.opacity = "0.6";
