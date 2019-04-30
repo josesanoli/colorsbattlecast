@@ -11,12 +11,10 @@
   const MSG_CELL_COLOR = "cell_color";
   const MSG_ALPHA = "alpha";
   const MSG_FINISH_SCREEN = "finish_screen";
+  const MSG_RESTART_GAME = "restart_game";
 
   // Cast
   const CUSTOM_CHANNEL = 'urn:x-cast:es.jolusan.colorsbattlecast';
-
-  // Variables
-  var gameCode = "0";
 
   // Colors
   const DEFAULT_CELL_COLOR = "#ddddff";
@@ -25,10 +23,15 @@
   const SCORE_COLOR = "#222222";
   const BEST_PLAYER_COLOR = "#a67c00";
   const BEST_SCORE_COLOR = "#876152";
+  const LAST_SECONDS_COLOR = "#ff0000";
+  const H2_TEXT_COLOR = "#cccccc";
+
+  // Variables
+  var gameCode = "0";
 
   hideAllPlayers();
 
-  cast.framework.CastReceiverContext.getInstance().setLoggerLevel(cast.framework.LoggerLevel.DEBUG);
+  //cast.framework.CastReceiverContext.getInstance().setLoggerLevel(cast.framework.LoggerLevel.DEBUG);
     
     global.onload = function() {
       
@@ -44,6 +47,7 @@
             let value = String(customEvent.data.value);
 
             if (action == MSG_GET_GAME_CODE){
+              document.getElementById("players").innerHTML = key;
               const objToSender = 
                 {
                   type: action,
@@ -67,6 +71,8 @@
                 document.getElementById(action + "_name").innerHTML = key;
                 document.getElementById(action + "_color").style.backgroundColor = value;
                 document.getElementById(action + "_score").innerHTML = "0";
+                document.getElementById(action + "_name").style.color = PLAYER_COLOR;
+                document.getElementById(action + "_score").style.color = SCORE_COLOR;
               } else {
                 document.getElementById(action + "_slot").style.display = "none";
               }
@@ -74,6 +80,9 @@
             } else if (action == MSG_SET_TIME){
               document.getElementById("subtitle").innerHTML = key;
               document.getElementById("subtitle2").innerHTML = value;
+              if (value == "10"){
+                document.getElementById("subtitle2").color = LAST_SECONDS_COLOR;
+              } 
           
             } else if (action == MSG_PLAYER_SCORE){
               document.getElementById(key + "_score").innerHTML = value;
@@ -89,7 +98,13 @@
             } else if (action == MSG_FINISH_SCREEN){
               document.getElementById("subtitle").innerHTML = key;
               document.getElementById("subtitle2").innerHTML = value;
+              document.getElementById("subtitle2").color = H2_TEXT_COLOR;
                 
+            } else if (action == MSG_RESTART_GAME){
+              initScreeen();
+              document.getElementById("subtitle").innerHTML = key;
+              document.getElementById("subtitle2").innerHTML = value;
+
             }
          
             //Send message received to device
@@ -109,6 +124,20 @@
         context.start(options);
 
     };
+
+    function initScreeen(){
+      hideAllPlayers();
+      document.getElementById("subtitle").innerHTML = "";
+      document.getElementById("subtitle2").innerHTML = "-";
+      document.getElementById("subtitle2").color = H2_TEXT_COLOR;
+      var cellNames = ["B3","C3","C2","B2","A2","A3","A4","B4","C4","D4","D3","D2","D1","C1","B1","A1"]; 
+      var i = 0;
+      for (i = 0; i < cellNames.length; i++) { 
+        var cellKey = "cell" + cellNames[i]
+        document.getElementById(cellKey).style.backgroundColor = DEFAULT_CELL_COLOR;
+        document.getElementById(key).style.opacity = "1.0";
+      }
+    }
 
     function hideAllPlayers(){
       var i;
