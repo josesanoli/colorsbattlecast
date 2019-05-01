@@ -51,7 +51,7 @@
               const objToSender = 
                 {
                   type: action,
-                  message: gameCode.substr(id.length - 4)
+                  message: gameCode.substr(gameCode.length - 4)
                 };
               context.sendCustomMessage(CUSTOM_CHANNEL, undefined, objToSender);
           
