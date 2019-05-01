@@ -5,9 +5,9 @@
   const MSG_INIT_SCREEN = "init_screen";
   const MSG_START_COUNTDOWN = "start_countdown";
   const MSG_START_GAME = "start_game";
-  const MSG_EDIT_PLAYER = "player_";
+  const MSG_EDIT_PLAYER = "player_";//No other must starts with "player_"
   const MSG_SET_TIME = "set_time";
-  const MSG_PLAYER_SCORE = "player_score";
+  const MSG_PLAYER_SCORE = "update_score";
   const MSG_CELL_COLOR = "cell_color";
   const MSG_ALPHA = "alpha";
   const MSG_FINISH_SCREEN = "finish_screen";
