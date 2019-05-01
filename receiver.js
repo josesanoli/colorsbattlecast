@@ -81,7 +81,7 @@
               document.getElementById("subtitle").innerHTML = key;
               document.getElementById("subtitle2").innerHTML = value;
               if (value == "10"){
-                document.getElementById("subtitle2").color = LAST_SECONDS_COLOR;
+                document.getElementById("subtitle2").style.color = LAST_SECONDS_COLOR;
               } 
           
             } else if (action == MSG_UPDATE_SCORE){
@@ -129,7 +129,7 @@
       hideAllPlayers();
       document.getElementById("subtitle").innerHTML = "";
       document.getElementById("subtitle2").innerHTML = "-";
-      document.getElementById("subtitle2").color = H2_TEXT_COLOR;
+      document.getElementById("subtitle2").style.color = H2_TEXT_COLOR;
       var cellNames = ["B3","C3","C2","B2","A2","A3","A4","B4","C4","D4","D3","D2","D1","C1","B1","A1"]; 
       var i = 0;
       for (i = 0; i < cellNames.length; i++) { 
