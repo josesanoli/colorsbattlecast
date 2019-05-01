@@ -154,7 +154,7 @@
     }
 
     function startCountDown(){
-      var dissapearOrder = ["B3","C3","C2","B2","A2","A3","A4","B4","C4","D4","D3","D2","D1","C1","B1","A1"]; 
+      var dissapearOrder = ["C3","B3","B2","C2","D2","D3","D4","C4","B4","A4","A3","A2","A1","B1","C1","D1"]; 
       var i = 0;
       for (i = 0; i < dissapearOrder.length; i++) { 
         var cellKey = "cell" + dissapearOrder[i]
