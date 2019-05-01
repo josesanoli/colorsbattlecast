@@ -7,7 +7,7 @@
   const MSG_START_GAME = "start_game";
   const MSG_EDIT_PLAYER = "player_";//No other must starts with "player_"
   const MSG_SET_TIME = "set_time";
-  const MSG_PLAYER_SCORE = "update_score";
+  const MSG_UPDATE_SCORE = "update_score";
   const MSG_CELL_COLOR = "cell_color";
   const MSG_ALPHA = "alpha";
   const MSG_FINISH_SCREEN = "finish_screen";
@@ -84,7 +84,7 @@
                 document.getElementById("subtitle2").color = LAST_SECONDS_COLOR;
               } 
           
-            } else if (action == MSG_PLAYER_SCORE){
+            } else if (action == MSG_UPDATE_SCORE){
               document.getElementById(key + "_score").innerHTML = value;
               checkBestScore();
 
@@ -135,7 +135,7 @@
       for (i = 0; i < cellNames.length; i++) { 
         var cellKey = "cell" + cellNames[i]
         document.getElementById(cellKey).style.backgroundColor = DEFAULT_CELL_COLOR;
-        document.getElementById(key).style.opacity = "1.0";
+        document.getElementById(cellKey).style.opacity = "1.0";
       }
     }
 
