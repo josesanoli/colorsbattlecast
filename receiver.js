@@ -98,7 +98,7 @@
             } else if (action == MSG_FINISH_SCREEN){
               document.getElementById("subtitle").innerHTML = key;
               document.getElementById("subtitle2").innerHTML = value;
-              document.getElementById("subtitle2").color = H2_TEXT_COLOR;
+              document.getElementById("subtitle2").style.color = H2_TEXT_COLOR;
                 
             } else if (action == MSG_RESTART_GAME){
               initScreeen();
