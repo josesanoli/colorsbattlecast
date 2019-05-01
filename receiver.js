@@ -27,11 +27,11 @@
   const H2_TEXT_COLOR = "#cccccc";
 
   // Variables
-  var gameCode = "0";
+  var gameCode = "0000";
 
   hideAllPlayers();
 
-  //cast.framework.CastReceiverContext.getInstance().setLoggerLevel(cast.framework.LoggerLevel.DEBUG);
+  cast.framework.CastReceiverContext.getInstance().setLoggerLevel(cast.framework.LoggerLevel.DEBUG);
     
     global.onload = function() {
       
@@ -51,7 +51,7 @@
               const objToSender = 
                 {
                   type: action,
-                  message: gameCode
+                  message: gameCode.substr(id.length - 4)
                 };
               context.sendCustomMessage(CUSTOM_CHANNEL, undefined, objToSender);
           
