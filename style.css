@@ -17,7 +17,7 @@ h1 {
 h2 {
     text-align: center;
     color: #cccccc;
-    font-size:2vw;
+    font-size:2.5vw;
 }
 h3 {
     text-align: center;
@@ -26,20 +26,19 @@ h3 {
 }
 h4 {
     color: #eeeeee;
-    font-size:1.6vw;
+    font-size:1.9vw;
 }
 #info_view {
-    height: 95vh;
+    height: 96vh;
     width: 35%;
 }
 #title_view {
-    height: 23vh;
+    height: 25vh;
     width: 100%;
 }
 #game_players {
     height: 70vh;
     width: 100%;
-    margin-left: 3%;
   }
 .player_row{
     height: 5vh;
