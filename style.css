@@ -43,12 +43,12 @@ h4 {
 .player_row{
     height: 5vh;
     width: 100%;
-    display: none;
+    display: flex;
     justify-content: center;
     margin-bottom: 8px;
 }
 .row_circle {
-    background: #ddddff;
+    background: #76C3A7;
     border-radius: 10px;
     height: 100%;
     width: 12%;
@@ -57,6 +57,15 @@ h4 {
     align-items: center; 
   }
 
+  #player_1_color{
+    background: #ECA379;
+    border-radius: 10px;
+    height: 100%;
+    width: 12%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+  }
 .player_name {
     width: 40%;
     margin-left: 12px;

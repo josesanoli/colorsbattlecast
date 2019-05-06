@@ -29,9 +29,9 @@
   // Variables
   var gameCode = "0000";
 
-  hideAllPlayers();
+  //hideAllPlayers();
 
-  cast.framework.CastReceiverContext.getInstance().setLoggerLevel(cast.framework.LoggerLevel.DEBUG);
+  //cast.framework.CastReceiverContext.getInstance().setLoggerLevel(cast.framework.LoggerLevel.DEBUG);
     
     global.onload = function() {
       
