@@ -27,16 +27,16 @@
   const H2_TEXT_COLOR = "#cccccc";
 
   // Players Colors
-  const cPlayer_0 = "#745290";
-  const cPlayer_1 = "#963E74";
-  const cPlayer_2 = "#D0596E";
-  const cPlayer_3 = "#F68661";
-  const cPlayer_4 = "#FFBD5B";
-  const cPlayer_5 = "#F9F871";
-  const cPlayer_6 = "#00CFB9";
-  const cPlayer_7 = "#579D91";
-  const cPlayer_8 = "#0093C7";
-  const cPlayer_9 = "#355195";
+  const cPlayer_0 = "#963E74";
+  const cPlayer_1 = "#D0596E";
+  const cPlayer_2 = "#F68661";
+  const cPlayer_3 = "#FFBD5B";
+  const cPlayer_4 = "#F9F871";
+  const cPlayer_5 = "#00CFB9";
+  const cPlayer_6 = "#579D91";
+  const cPlayer_7 = "#0093C7";
+  const cPlayer_8 = "#355195";
+  const cPlayer_9 = "#745290";
 
   // Variables
   var gameCode = "0000";
