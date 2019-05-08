@@ -145,7 +145,8 @@
                src2.type = "audio/mpeg";
                src2.src  = "sounds/laser_1.mp3";
                snd2.appendChild(src2);
-               snd2.play();
+               //snd2.play();
+
               } else {
                 document.getElementById(key).style.opacity = "0.6";
               }
