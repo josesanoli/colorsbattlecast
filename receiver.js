@@ -115,12 +115,14 @@
               //    });
               //  }
 
-              var snd1  = new Audio();
-              var src1  = document.createElement("source");
-              src1.type = "audio/wav";
-              src1.src  = "sounds/laser_0.wav";
-              snd1.appendChild(src1);
-              snd1.play(); 
+              //var snd1  = new Audio();
+              //var src1  = document.createElement("source");
+              //src1.type = "audio/wav";
+              //src1.src  = "sounds/laser_0.wav";
+              //snd1.appendChild(src1);
+              //snd1.play(); 
+              var audio1 = document.getElementById('laser1');
+              audio1.play();
 
             } else if (action == MSG_CELL_COLOR){
               if (value != MSG_ALPHA){
@@ -140,12 +142,15 @@
                //   });
                // }
 
-               var snd2  = new Audio();
-               var src2  = document.createElement("source");
-               src2.type = "audio/mpeg";
-               src2.src  = "sounds/laser_1.mp3";
-               snd2.appendChild(src2);
+               //var snd2  = new Audio();
+               //var src2  = document.createElement("source");
+               //src2.type = "audio/mpeg";
+               //src2.src  = "sounds/laser_1.mp3";
+               //snd2.appendChild(src2);
                //snd2.play();
+
+               var audio2 = document.getElementById('laser2');
+               audio2.play();
 
               } else {
                 document.getElementById(key).style.opacity = "0.6";
