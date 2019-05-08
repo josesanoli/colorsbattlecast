@@ -119,19 +119,19 @@
               if (value != MSG_ALPHA){
                 document.getElementById(key).style.backgroundColor = value;
                 
-               // var playPromise = document.querySelector('#laser0').play();
-               // // In browsers that don’t yet support this functionality,
-               // // playPromise won’t be defined.
-               // if (playPromise !== undefined) {
-               //   playPromise.then(function() {
-               //     // Automatic playback started!
-               //     console.log('laser0: play');
-               //   }).catch(function(error) {
-               //     // Automatic playback failed.
-               //     // Show a UI element to let the user manually start playback.
-               //     console.log('laser0: error');
-               //   });
-               // }
+                var playPromise = document.querySelector('#laser0').play();
+                // In browsers that don’t yet support this functionality,
+                // playPromise won’t be defined.
+                if (playPromise !== undefined) {
+                  playPromise.then(function() {
+                    // Automatic playback started!
+                    console.log('laser0: play');
+                  }).catch(function(error) {
+                    // Automatic playback failed.
+                    // Show a UI element to let the user manually start playback.
+                    console.log('laser0: error');
+                  });
+                }
 
               } else {
                 document.getElementById(key).style.opacity = "0.6";
