@@ -27,7 +27,7 @@
   const H2_TEXT_COLOR = "#cccccc";
 
   // Players Colors
-  const cPlayer_0 = "#4F2F6A";
+  const cPlayer_0 = "#745290";
   const cPlayer_1 = "#963E74";
   const cPlayer_2 = "#D0596E";
   const cPlayer_3 = "#F68661";
