@@ -117,11 +117,11 @@
 
               var snd1  = new Audio();
               var src1  = document.createElement("source");
-              src1.type = "audio/mpeg";
+              src1.type = "audio/wav";
               src1.src  = "sounds/laser_0.wav";
               snd1.appendChild(src1);
               snd1.play(); 
-              
+
             } else if (action == MSG_CELL_COLOR){
               if (value != MSG_ALPHA){
                 document.getElementById(key).style.backgroundColor = value;
