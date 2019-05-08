@@ -106,7 +106,7 @@
                 document.getElementById(key).style.backgroundColor = value;
                 //var laser0 = new Audio('sounds/laser_0.mp3');
                 //laser0.play();
-                var playPromise = document.querySelector('sounds/laser_0.mp3').play();
+                var playPromise = document.querySelector('#laser0').play();
 
                 // In browsers that don’t yet support this functionality,
                 // playPromise won’t be defined.
