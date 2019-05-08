@@ -107,9 +107,11 @@
                 if (playPromise !== undefined) {
                   playPromise.then(function() {
                     // Automatic playback started!
+                    console.log('laser1: play');
                   }).catch(function(error) {
                     // Automatic playback failed.
                     // Show a UI element to let the user manually start playback.
+                    console.log('laser1: error');
                   });
                 }
 
@@ -123,9 +125,11 @@
                 if (playPromise !== undefined) {
                   playPromise.then(function() {
                     // Automatic playback started!
+                    console.log('laser0: play');
                   }).catch(function(error) {
                     // Automatic playback failed.
                     // Show a UI element to let the user manually start playback.
+                    console.log('laser0: error');
                   });
                 }
 
