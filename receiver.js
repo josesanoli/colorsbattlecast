@@ -101,19 +101,19 @@
               document.getElementById(key + "_score").innerHTML = value;
               checkBestScore();
 
-              //var playPromise = document.querySelector('#laser1').play();
-              //// In browsers that don’t yet support this functionality,
-              //// playPromise won’t be defined.
-              //if (playPromise !== undefined) {
-              //    playPromise.then(function() {
-              //      // Automatic playback started!
-              //      console.log('laser1: play');
-              //    }).catch(function(error) {
-              //      // Automatic playback failed.
-              //      // Show a UI element to let the user manually start playback.
-              //      console.log('laser1: error');
-              //    });
-              //  }
+              var playPromise = document.querySelector('#laser1').play();
+              // In browsers that don’t yet support this functionality,
+              // playPromise won’t be defined.
+              if (playPromise !== undefined) {
+                  playPromise.then(function() {
+                    // Automatic playback started!
+                    console.log('laser1: play');
+                  }).catch(function(error) {
+                    // Automatic playback failed.
+                    // Show a UI element to let the user manually start playback.
+                    console.log('laser1: error');
+                  });
+                }
 
               //var snd1  = new Audio();
               //var src1  = document.createElement("source");
@@ -122,25 +122,25 @@
               //snd1.appendChild(src1);
               //snd1.play(); 
               var audio1 = document.getElementById('laser1');
-              audio1.play();
+              //audio1.play();
 
             } else if (action == MSG_CELL_COLOR){
               if (value != MSG_ALPHA){
                 document.getElementById(key).style.backgroundColor = value;
                 
-               // var playPromise = document.querySelector('#laser0').play();
-               // // In browsers that don’t yet support this functionality,
-               // // playPromise won’t be defined.
-               // if (playPromise !== undefined) {
-               //   playPromise.then(function() {
-               //     // Automatic playback started!
-               //     console.log('laser0: play');
-               //   }).catch(function(error) {
-               //     // Automatic playback failed.
-               //     // Show a UI element to let the user manually start playback.
-               //     console.log('laser0: error');
-               //   });
-               // }
+                var playPromise = document.querySelector('#laser0').play();
+                // In browsers that don’t yet support this functionality,
+                // playPromise won’t be defined.
+                if (playPromise !== undefined) {
+                  playPromise.then(function() {
+                    // Automatic playback started!
+                    console.log('laser0: play');
+                  }).catch(function(error) {
+                    // Automatic playback failed.
+                    // Show a UI element to let the user manually start playback.
+                    console.log('laser0: error');
+                  });
+                }
 
                //var snd2  = new Audio();
                //var src2  = document.createElement("source");
@@ -150,7 +150,7 @@
                //snd2.play();
 
                var audio2 = document.getElementById('laser0');
-               audio2.play();
+               //audio2.play();
 
               } else {
                 document.getElementById(key).style.opacity = "0.6";
