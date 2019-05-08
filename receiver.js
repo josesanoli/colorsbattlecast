@@ -41,7 +41,7 @@
   // Variables
   var gameCode = "0000";
 
-  testColorsOnScreen();
+  //testColorsOnScreen();
   hideAllPlayers();
 
   cast.framework.CastReceiverContext.getInstance().setLoggerLevel(cast.framework.LoggerLevel.DEBUG);
@@ -104,8 +104,20 @@
             } else if (action == MSG_CELL_COLOR){
               if (value != MSG_ALPHA){
                 document.getElementById(key).style.backgroundColor = value;
-                var laser0 = new Audio('sounds/laser_0.mp3');
-                laser0.play();
+                //var laser0 = new Audio('sounds/laser_0.mp3');
+                //laser0.play();
+                var playPromise = document.querySelector('sounds/laser_0.mp3').play();
+
+                // In browsers that don’t yet support this functionality,
+                // playPromise won’t be defined.
+                if (playPromise !== undefined) {
+                  playPromise.then(function() {
+                    // Automatic playback started!
+                  }).catch(function(error) {
+                    // Automatic playback failed.
+                    // Show a UI element to let the user manually start playback.
+                  });
+                }
               } else {
                 document.getElementById(key).style.opacity = "0.6";
               }
