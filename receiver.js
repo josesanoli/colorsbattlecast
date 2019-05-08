@@ -149,7 +149,7 @@
                //snd2.appendChild(src2);
                //snd2.play();
 
-               var audio2 = document.getElementById('laser2');
+               var audio2 = document.getElementById('laser0');
                audio2.play();
 
               } else {
