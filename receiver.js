@@ -119,7 +119,7 @@
               if (value != MSG_ALPHA){
                 document.getElementById(key).style.backgroundColor = value;
                 
-                var playPromise = document.querySelector('#laser0').play();
+                var playPromise = document.querySelector('#laser2').play();
                 // In browsers that don’t yet support this functionality,
                 // playPromise won’t be defined.
                 if (playPromise !== undefined) {
