@@ -104,7 +104,7 @@
             } else if (action == MSG_CELL_COLOR){
               if (value != MSG_ALPHA){
                 document.getElementById(key).style.backgroundColor = value;
-                var laser0 = new Audio('sounds/lasr_0.wav');
+                var laser0 = new Audio('sounds/laser_0.wav');
                 laser0.play();
               } else {
                 document.getElementById(key).style.opacity = "0.6";
