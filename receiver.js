@@ -26,9 +26,22 @@
   const LAST_SECONDS_COLOR = "#ff0000";
   const H2_TEXT_COLOR = "#cccccc";
 
+  // Players Colors
+  const cPlayer_0 = "#8561A0";
+  const cPlayer_1 = "#D071AA";
+  const cPlayer_2 = "#E8839A";
+  const cPlayer_3 = "#ECA379";
+  const cPlayer_4 = "#F8C26B";
+  const cPlayer_5 = "#F9F17F";
+  const cPlayer_6 = "#A9D075";
+  const cPlayer_7 = "#76C3A7";
+  const cPlayer_8 = "#61BED4";
+  const cPlayer_9 = "#6399CF";
+
   // Variables
   var gameCode = "0000";
 
+  testColorsOnScreen();
   hideAllPlayers();
 
   cast.framework.CastReceiverContext.getInstance().setLoggerLevel(cast.framework.LoggerLevel.DEBUG);
@@ -206,6 +219,20 @@
         }
         
       }
+    }
+
+    function testColorsOnScreen(){
+
+      document.getElementById("cellA2").style.backgroundColor = cPlayer_0;
+      document.getElementById("cellA1").style.backgroundColor = cPlayer_1;
+      document.getElementById("cellB1").style.backgroundColor = cPlayer_2;
+      document.getElementById("cellC1").style.backgroundColor = cPlayer_3;
+      document.getElementById("cellD1").style.backgroundColor = cPlayer_4;
+      document.getElementById("cellD2").style.backgroundColor = cPlayer_5;
+      document.getElementById("cellD3").style.backgroundColor = cPlayer_6;
+      document.getElementById("cellC3").style.backgroundColor = cPlayer_7;
+      document.getElementById("cellB3").style.backgroundColor = cPlayer_8;
+      document.getElementById("cellA3").style.backgroundColor = cPlayer_9;
     }
 
 }(this));
