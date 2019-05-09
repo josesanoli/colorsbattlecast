@@ -101,7 +101,7 @@
               document.getElementById(key + "_score").innerHTML = value;
               checkBestScore();
 
-              //setTimeout(function(){ playSound("laser0_ko"); }, 500);
+              setTimeout(function(){ playSound("laser3_ko"); }, 300);
               //playSound("laser0")
 
 //
