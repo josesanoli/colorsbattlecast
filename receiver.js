@@ -292,7 +292,7 @@
       //const audio = document.querySelector(`audio[id='${e}']`);
       //if (!audio) return; //stop the function from running all together
       //audio.currentTime = 0; //rewind to the start
-      var playPromise = document.querySelector(`audio[id='${e}']`).play();
+      var playPromise = document.querySelector(`audio[id='${e}_ko']`).play();
           // In browsers that don’t yet support this functionality,
           // playPromise won’t be defined.
           if (playPromise !== undefined) {
