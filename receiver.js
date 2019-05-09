@@ -101,7 +101,7 @@
               document.getElementById(key + "_score").innerHTML = value;
               checkBestScore();
 
-              setTimeout(function(){ playSound("laser0"); }, 500);
+              setTimeout(function(){ playSound("laser0_ko"); }, 500);
               //playSound("laser0")
 
 //
@@ -132,7 +132,7 @@
               if (value != MSG_ALPHA){
                 document.getElementById(key).style.backgroundColor = value;
                 
-                playSound("laser3")
+                playSound("laser3_ko")
             //    
             //    var playPromise = document.querySelector('#laser3').play();
             //    // In browsers that don’t yet support this functionality,
@@ -293,7 +293,7 @@
       //const audio = document.querySelector(`audio[id='${e}']`);
       //if (!audio) return; //stop the function from running all together
       //audio.currentTime = 0; //rewind to the start
-      var playPromise = document.querySelector(`audio[id='${e}_ko']`).play();
+      var playPromise = document.querySelector(`audio[id='${e}']`).play();
           // In browsers that don’t yet support this functionality,
           // playPromise won’t be defined.
           if (playPromise !== undefined) {
