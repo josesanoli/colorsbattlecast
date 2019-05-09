@@ -101,9 +101,10 @@
               document.getElementById(key + "_score").innerHTML = value;
               checkBestScore();
 
-              setTimeout(function(){ 
+             var myVar = setTimeout(function(){ 
                 console.log('laser3: timeout');
                 playSound("laser3_ko"); 
+                clearTimeout(myVar);
               }, 300);
               //playSound("laser0")
 
