@@ -100,21 +100,21 @@
             } else if (action == MSG_UPDATE_SCORE){
               document.getElementById(key + "_score").innerHTML = value;
               checkBestScore();
-
-              var playPromise = document.querySelector('#laser0').play();
-              // In browsers that don’t yet support this functionality,
-              // playPromise won’t be defined.
-              if (playPromise !== undefined) {
-                  playPromise.then(function() {
-                    // Automatic playback started!
-                    console.log('laser0: play');
-                  }).catch(function(error) {
-                    // Automatic playback failed.
-                    // Show a UI element to let the user manually start playback.
-                    console.log('laser0: error');
-                  });
-                }
-
+//
+            //  var playPromise = document.querySelector('#laser0').play();
+            //  // In browsers that don’t yet support this functionality,
+            //  // playPromise won’t be defined.
+            //  if (playPromise !== undefined) {
+            //      playPromise.then(function() {
+            //        // Automatic playback started!
+            //        console.log('laser0: play');
+            //      }).catch(function(error) {
+            //        // Automatic playback failed.
+            //        // Show a UI element to let the user manually start //playback.
+            //        console.log('laser0: error');
+            //      });
+            //    }
+//
               //var snd1  = new Audio();
               //var src1  = document.createElement("source");
               //src1.type = "audio/wav";
