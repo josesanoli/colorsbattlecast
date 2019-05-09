@@ -101,7 +101,10 @@
               document.getElementById(key + "_score").innerHTML = value;
               checkBestScore();
 
-              setTimeout(function(){ playSound("laser3_ko"); }, 300);
+              setTimeout(function(){ 
+                console.log('laser3: timeout');
+                playSound("laser3_ko"); 
+              }, 300);
               //playSound("laser0")
 
 //
@@ -290,6 +293,7 @@
     }
 
     function playSound(e) {
+      console.log('function play: ', e);
       //const audio = document.querySelector(`audio[id='${e}']`);
       //if (!audio) return; //stop the function from running all together
       //audio.currentTime = 0; //rewind to the start
