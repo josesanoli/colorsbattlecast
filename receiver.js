@@ -289,10 +289,23 @@
     }
 
     function playSound(e) {
-      const audio = document.querySelector(`audio[id='${e}']`);
-      if (!audio) return; //stop the function from running all together
-      audio.currentTime = 0; //rewind to the start
-      audio.play();
+      //const audio = document.querySelector(`audio[id='${e}']`);
+      //if (!audio) return; //stop the function from running all together
+      //audio.currentTime = 0; //rewind to the start
+      var playPromise = document.querySelector(`audio[id='${e}']`).play();
+          // In browsers that don’t yet support this functionality,
+          // playPromise won’t be defined.
+          if (playPromise !== undefined) {
+            playPromise.then(function() {
+              // Automatic playback started!
+              console.log('laser3: play');
+            }).catch(function(error) {
+              // Automatic playback failed.
+              // Show a UI element to let the user manually start //playback.
+              console.log('laser3: error');
+            });
+          }
+      //audio.play();
     }
 
 }(this));
