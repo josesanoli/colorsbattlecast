@@ -101,7 +101,8 @@
               document.getElementById(key + "_score").innerHTML = value;
               checkBestScore();
 
-              playSound("laser0")
+              setTimeout(function(){ playSound("laser0"); }, 500);
+              //playSound("laser0")
 
 //
             //  var playPromise = document.querySelector('#laser0').play();
