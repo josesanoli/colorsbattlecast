@@ -298,11 +298,11 @@
           if (playPromise !== undefined) {
             playPromise.then(function() {
               // Automatic playback started!
-              console.log('laser3: play');
+              console.log('play: ', e);
             }).catch(function(error) {
               // Automatic playback failed.
               // Show a UI element to let the user manually start //playback.
-              console.log('laser3: error');
+              console.log('error: ', e);
             });
           }
       //audio.play();
