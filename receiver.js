@@ -32,8 +32,8 @@
   const cPlayer_2 = "#F68661";
   const cPlayer_3 = "#FFBD5B";
   const cPlayer_4 = "#F9F871";
-  const cPlayer_5 = "#00CFB9";
-  const cPlayer_6 = "#009884";
+  const cPlayer_5 = "#A1EE8A";
+  const cPlayer_6 = "#00CFB9";
   const cPlayer_7 = "#0093C7";
   const cPlayer_8 = "#355195";
   const cPlayer_9 = "#745290";
