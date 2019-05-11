@@ -16,7 +16,7 @@
 
   // Cast
   const CUSTOM_CHANNEL = 'urn:x-cast:es.jolusan.colorsbattlecast';
-  const MIN_CAST_VERSION = "2";
+  const MIN_CAST_VERSION = "1";
 
   // Colors
   const DEFAULT_CELL_COLOR = "#ddddff";
