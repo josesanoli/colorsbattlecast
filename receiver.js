@@ -12,9 +12,11 @@
   const MSG_ALPHA = "alpha";
   const MSG_FINISH_SCREEN = "finish_screen";
   const MSG_RESTART_GAME = "restart_game";
+  const MSG_MIN_CAST_VERSION = "min_cast_version";
 
   // Cast
   const CUSTOM_CHANNEL = 'urn:x-cast:es.jolusan.colorsbattlecast';
+  const MIN_CAST_VERSION = "2";
 
   // Colors
   const DEFAULT_CELL_COLOR = "#ddddff";
@@ -65,6 +67,15 @@
                 {
                   type: action,
                   message: gameCode.substr(gameCode.length - 4)
+                };
+              context.sendCustomMessage(CUSTOM_CHANNEL, undefined, objToSender);
+          
+            } else if (action == MSG_MIN_CAST_VERSION){
+              document.getElementById("players").innerHTML = key;
+              const objToSender = 
+                {
+                  type: action,
+                  message: MIN_CAST_VERSION
                 };
               context.sendCustomMessage(CUSTOM_CHANNEL, undefined, objToSender);
           
