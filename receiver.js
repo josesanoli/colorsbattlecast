@@ -341,6 +341,7 @@
       const playerManager = cast.framework.CastReceiverContext.getInstance().getPlayerManager();
       const loadRequestData = new cast.framework.messages.LoadRequestData();
       loadRequestData.media = new cast.framework.messages.MediaInformation();
+      console.log('soundSrc: ', soundSrc);
       loadRequestData.media.contentId = soundSrc;
       //loadRequestData.media.playSound
       loadRequestData.autoplay = true;
