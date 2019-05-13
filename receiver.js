@@ -337,7 +337,7 @@
       //      });
       //    }
 
-      const playerManager = context.getPlayerManager();
+      const playerManager = cast.framework.CastReceiverContext.getInstance().getPlayerManager();
       const loadRequestData = new cast.framework.messages.LoadRequestData();
 	loadRequestData.media = new cast.framework.messages.MediaInformation();
 	loadRequestData.media.contentId = "sounds/laser_4.mp3";
