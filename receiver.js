@@ -317,7 +317,7 @@
 
     function playSound(htmlSound) {
       console.log('function play: ', htmlSound);
-      //const audio = document.querySelector("#" +(htmlSound));
+      //const audio = document.querySelector("#" +(htmlSound)).src;
       //if (!audio) return; //stop the function from running all together
       //audio.currentTime = 0; //rewind to the start
       //
@@ -337,12 +337,14 @@
       //      });
       //    }
 
+      var soundSrc = document.getElementById(htmlSound).src;
       const playerManager = cast.framework.CastReceiverContext.getInstance().getPlayerManager();
       const loadRequestData = new cast.framework.messages.LoadRequestData();
-	loadRequestData.media = new cast.framework.messages.MediaInformation();
-	loadRequestData.media.contentId = "sounds/laser_4.mp3";
-	loadRequestData.autoplay = true;
-	playerManager.load(loadRequestData).then(
+      loadRequestData.media = new cast.framework.messages.MediaInformation();
+      loadRequestData.media.contentId = soundSrc;
+      //loadRequestData.media.playSound
+      loadRequestData.autoplay = true;
+      playerManager.load(loadRequestData).then(
 	    function() { console.log('Load succeed'); },
 	    function(errorCode) { console.log('Error code: ' + errorCode); }
 	);
