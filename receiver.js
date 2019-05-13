@@ -185,10 +185,10 @@
               document.getElementById("subtitle2").innerHTML = value;
               document.getElementById("subtitle2").style.color = H2_TEXT_COLOR;
               if (gameOverShown){
-                playSound("winner_0");
+                playSound("winner_1");
               } else {
                 gameOverShown = true
-                playSound("game_over_0");
+                playSound("game_over_1");
               }
                 
             } else if (action == MSG_RESTART_GAME){
@@ -257,7 +257,7 @@
       timer = setInterval(function(){
             if (counter === dissapearOrder.length) {
               //When finished
-              playSound("start_game_0");
+              playSound("start_game_1");
               clearInterval(timer);
               const objToSender = 
               {
@@ -343,7 +343,6 @@
       loadRequestData.media = new cast.framework.messages.MediaInformation();
       console.log('soundSrc: ', soundSrc);
       loadRequestData.media.contentId = soundSrc;
-      //loadRequestData.media.playSound
       loadRequestData.autoplay = true;
       playerManager.load(loadRequestData).then(
 	    function() { console.log('Load succeed'); },
