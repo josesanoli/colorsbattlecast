@@ -42,6 +42,7 @@
 
   // Variables
   var gameCode = "0000";
+  var countDownStart = false;
   var gameOverShown = false;
 
   testColorsOnScreen();
@@ -88,6 +89,7 @@
             } else if (action == MSG_START_COUNTDOWN){
               document.getElementById("subtitle").innerHTML = key;
               document.getElementById("subtitle2").innerHTML = value;
+              countDownStart = true;
               startCountDown();
             
             } else if (action.startsWith(MSG_EDIT_PLAYER)){
@@ -98,7 +100,9 @@
                 document.getElementById(action + "_score").innerHTML = "0";
                 document.getElementById(action + "_name").style.color = PLAYER_COLOR;
                 document.getElementById(action + "_score").style.color = SCORE_COLOR;
-                playSound(getSoundIdByColor(value))
+                if (!countDownStart){
+                  playSound(getSoundIdByColor(value))
+                }
               } else {
                 document.getElementById(action + "_slot").style.display = "none";
               }
@@ -129,10 +133,11 @@
               document.getElementById("subtitle2").innerHTML = value;
               document.getElementById("subtitle2").style.color = H2_TEXT_COLOR;
               if (gameOverShown){
+                //Suena este siempre
                 playSound("winner_1");
               } else {
-                gameOverShown = true
                 playSound("game_over_0");
+                gameOverShown = true;
               }
                 
             } else if (action == MSG_RESTART_GAME){
@@ -168,11 +173,12 @@
       var cellNames = ["B3","C3","C2","B2","A2","A3","A4","B4","C4","D4","D3","D2","D1","C1","B1","A1"]; 
       var i = 0;
       for (i = 0; i < cellNames.length; i++) { 
-        var cellKey = "cell" + cellNames[i]
+        var cellKey = "cell" + cellNames[i];
         document.getElementById(cellKey).style.backgroundColor = DEFAULT_CELL_COLOR;
         document.getElementById(cellKey).style.opacity = "1.0";
       }
       gameOverShown = false;
+      countDownStart = false;
     }
 
     function hideAllPlayers(){
@@ -299,43 +305,20 @@
       var playerSound = "laser_8";
       switch(color){
         
-        case cPlayer_0:
-          playerSound = "laser_0";
-          break;
-        case cPlayer_1:
-          playerSound = "laser_1";
-          break;
-        case cPlayer_2:
-          playerSound = "laser_2";
-          break;
-        case cPlayer_3:
-          playerSound = "laser_3";
-          break;
-        case cPlayer_4:
-          playerSound = "laser_4";
-          break;
-        case cPlayer_5:
-          playerSound = "laser_5";
-          break;
-        case cPlayer_6:
-          playerSound = "laser_6";
-          break;
-        case cPlayer_7:
-          playerSound = "laser_7";
-          break;
-        case cPlayer_8:
-          playerSound = "laser_8";
-          break;     
-        case cPlayer_9:
-          playerSound = "laser_9";
-          break;
-        case DEFAULT_CELL_COLOR:
-          playerSound = "clear_0";
-          break;
+        case cPlayer_0: playerSound = "laser_0"; break;
+        case cPlayer_1: playerSound = "laser_1"; break;
+        case cPlayer_2: playerSound = "laser_2"; break;
+        case cPlayer_3: playerSound = "laser_3"; break;
+        case cPlayer_4: playerSound = "laser_4"; break;
+        case cPlayer_5: playerSound = "laser_5"; break;
+        case cPlayer_6: playerSound = "laser_6"; break;
+        case cPlayer_7: playerSound = "laser_7"; break;
+        case cPlayer_8: playerSound = "laser_8"; break;     
+        case cPlayer_9: playerSound = "laser_9"; break;
+        case DEFAULT_CELL_COLOR: playerSound = "clear_0"; break;
       }
 
       return playerSound;
-
     }
 
 }(this));
