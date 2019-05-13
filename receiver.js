@@ -42,6 +42,7 @@
 
   // Variables
   var gameCode = "0000";
+  var gameOverShown = false;
 
   testColorsOnScreen();
   hideAllPlayers();
@@ -97,6 +98,7 @@
                 document.getElementById(action + "_score").innerHTML = "0";
                 document.getElementById(action + "_name").style.color = PLAYER_COLOR;
                 document.getElementById(action + "_score").style.color = SCORE_COLOR;
+                playSound(getSoundIdByColor(value))
               } else {
                 document.getElementById(action + "_slot").style.display = "none";
               }
@@ -106,17 +108,18 @@
               document.getElementById("subtitle2").innerHTML = value;
               if (value == "10"){
                 document.getElementById("subtitle2").style.color = LAST_SECONDS_COLOR;
+                playSound("last_ten");
               } 
           
             } else if (action == MSG_UPDATE_SCORE){
               document.getElementById(key + "_score").innerHTML = value;
               checkBestScore();
 
-             var myVar = setTimeout(function(){ 
-                console.log('laser3: timeout');
-                playSound("laser3_ko"); 
-                clearTimeout(myVar);
-              }, 300);
+            //  var myVar = setTimeout(function(){ 
+            //     console.log('laser3: timeout');
+            //     playSound("laser3_ko"); 
+            //     clearTimeout(myVar);
+            //   }, 300);
               //playSound("laser0")
 
 //
@@ -146,8 +149,8 @@
             } else if (action == MSG_CELL_COLOR){
               if (value != MSG_ALPHA){
                 document.getElementById(key).style.backgroundColor = value;
-                
-                playSound("laser3_ko")
+                playSound(getSoundIdByColor(value))
+                //playSound("laser3_ko")
             //    
             //    var playPromise = document.querySelector('#laser3').play();
             //    // In browsers that don’t yet support this functionality,
@@ -181,6 +184,12 @@
               document.getElementById("subtitle").innerHTML = key;
               document.getElementById("subtitle2").innerHTML = value;
               document.getElementById("subtitle2").style.color = H2_TEXT_COLOR;
+              if (gameOverShown){
+                playSound("winner_0");
+              } else {
+                gameOverShown = true
+                playSound("game_over_0");
+              }
                 
             } else if (action == MSG_RESTART_GAME){
               initScreeen();
@@ -219,6 +228,7 @@
         document.getElementById(cellKey).style.backgroundColor = DEFAULT_CELL_COLOR;
         document.getElementById(cellKey).style.opacity = "1.0";
       }
+      gameOverShown = false;
     }
 
     function hideAllPlayers(){
@@ -247,6 +257,7 @@
       timer = setInterval(function(){
             if (counter === dissapearOrder.length) {
               //When finished
+              playSound("start_game_0");
               clearInterval(timer);
               const objToSender = 
               {
@@ -323,6 +334,50 @@
             });
           }
       //audio.play();
+    }
+
+    function getSoundIdByColor(color) {
+
+      var playerSound = "laser_8";
+      switch(color){
+        
+        case cPlayer_0:
+          playerSound = "laser_0";
+          break;
+        case cPlayer_1:
+          playerSound = "laser_1";
+          break;
+        case cPlayer_2:
+          playerSound = "laser_2";
+          break;
+        case cPlayer_3:
+          playerSound = "laser_3";
+          break;
+        case cPlayer_4:
+          playerSound = "laser_4";
+          break;
+        case cPlayer_5:
+          playerSound = "laser_5";
+          break;
+        case cPlayer_6:
+          playerSound = "laser_6";
+          break;
+        case cPlayer_7:
+          playerSound = "laser_7";
+          break;
+        case cPlayer_8:
+          playerSound = "laser_8";
+          break;     
+        case cPlayer_9:
+          playerSound = "laser_9";
+          break;
+        case DEFAULT_CELL_COLOR:
+          playerSound = "clear_0";
+          break;
+      }
+
+      return playerSound;
+
     }
 
 }(this));
