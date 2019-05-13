@@ -43,6 +43,7 @@
   // Variables
   var gameCode = "0000";
   var countDownStart = false;
+  var lastTenPlayed = false;
   var gameOverShown = false;
 
   testColorsOnScreen();
@@ -112,7 +113,10 @@
               document.getElementById("subtitle2").innerHTML = value;
               if (value == "10"){
                 document.getElementById("subtitle2").style.color = LAST_SECONDS_COLOR;
-                playSound("last_ten");
+                if (!lastTenPlayed){
+                  playSound("last_ten");
+                  lastTenPlayed = true;
+                }
               } 
           
             } else if (action == MSG_UPDATE_SCORE){
@@ -179,6 +183,7 @@
       }
       gameOverShown = false;
       countDownStart = false;
+      lastTenPlayed = false;
     }
 
     function hideAllPlayers(){
@@ -304,15 +309,14 @@
 
       var playerSound = "laser_8";
       switch(color){
-        
-        case cPlayer_0: playerSound = "laser_0"; break;
-        case cPlayer_1: playerSound = "laser_1"; break;
-        case cPlayer_2: playerSound = "laser_2"; break;
-        case cPlayer_3: playerSound = "laser_3"; break;
-        case cPlayer_4: playerSound = "laser_4"; break;
-        case cPlayer_5: playerSound = "laser_5"; break;
-        case cPlayer_6: playerSound = "laser_6"; break;
-        case cPlayer_7: playerSound = "laser_7"; break;
+        case cPlayer_0: playerSound = "laser_10"; break;
+        case cPlayer_1: playerSound = "laser_11"; break;
+        case cPlayer_2: playerSound = "laser_12"; break;
+        case cPlayer_3: playerSound = "laser_13"; break;
+        case cPlayer_4: playerSound = "laser_14"; break;
+        case cPlayer_5: playerSound = "laser_15"; break;
+        case cPlayer_6: playerSound = "laser_16"; break;
+        case cPlayer_7: playerSound = "laser_17"; break;
         case cPlayer_8: playerSound = "laser_8"; break;     
         case cPlayer_9: playerSound = "laser_9"; break;
         case DEFAULT_CELL_COLOR: playerSound = "clear_0"; break;
