@@ -317,11 +317,11 @@
 
     function playSound(htmlSound) {
       console.log('function play: ', htmlSound);
-      const audio = document.querySelector("#" +(htmlSound));
-      if (!audio) return; //stop the function from running all together
-      audio.currentTime = 0; //rewind to the start
-      
-      audio.play();
+      //const audio = document.querySelector("#" +(htmlSound));
+      //if (!audio) return; //stop the function from running all together
+      //audio.currentTime = 0; //rewind to the start
+      //
+      //audio.play();
 
       //var playPromise = document.querySelector("#" +(htmlSound)).play();
       //    // In browsers that don’t yet support this functionality,
@@ -336,6 +336,16 @@
       //        console.log('error: ', htmlSound);
       //      });
       //    }
+
+      const playerManager = context.getPlayerManager();
+      const loadRequestData = new cast.framework.messages.LoadRequestData();
+	loadRequestData.media = new cast.framework.messages.MediaInformation();
+	loadRequestData.media.contentId = "sounds/laser_4.mp3";
+	loadRequestData.autoplay = true;
+	playerManager.load(loadRequestData).then(
+	    function() { console.log('Load succeed'); },
+	    function(errorCode) { console.log('Error code: ' + errorCode); }
+	);
     }
 
     function getSoundIdByColor(color) {
