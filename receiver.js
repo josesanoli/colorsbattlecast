@@ -115,66 +115,10 @@
               document.getElementById(key + "_score").innerHTML = value;
               checkBestScore();
 
-            //  var myVar = setTimeout(function(){ 
-            //     console.log('laser3: timeout');
-            //     playSound("laser3_ko"); 
-            //     clearTimeout(myVar);
-            //   }, 300);
-              //playSound("laser0")
-
-//
-            //  var playPromise = document.querySelector('#laser0').play();
-            //  // In browsers that don’t yet support this functionality,
-            //  // playPromise won’t be defined.
-            //  if (playPromise !== undefined) {
-            //      playPromise.then(function() {
-            //        // Automatic playback started!
-            //        console.log('laser0: play');
-            //      }).catch(function(error) {
-            //        // Automatic playback failed.
-            //        // Show a UI element to let the user manually start //playback.
-            //        console.log('laser0: error');
-            //      });
-            //    }
-//
-              //var snd1  = new Audio();
-              //var src1  = document.createElement("source");
-              //src1.type = "audio/wav";
-              //src1.src  = "sounds/laser_0.wav";
-              //snd1.appendChild(src1);
-              //snd1.play(); 
-              //var audio1 = document.getElementById('laser1');
-              //audio1.play();
-
             } else if (action == MSG_CELL_COLOR){
               if (value != MSG_ALPHA){
                 document.getElementById(key).style.backgroundColor = value;
-                playSound(getSoundIdByColor(value))
-                //playSound("laser3_ko")
-            //    
-            //    var playPromise = document.querySelector('#laser3').play();
-            //    // In browsers that don’t yet support this functionality,
-            //    // playPromise won’t be defined.
-            //    if (playPromise !== undefined) {
-            //      playPromise.then(function() {
-            //        // Automatic playback started!
-            //        console.log('laser3: play');
-            //      }).catch(function(error) {
-            //        // Automatic playback failed.
-            //        // Show a UI element to let the user manually start //playback.
-            //        console.log('laser3: error');
-            //      });
-            //    }
-//
-               //var snd2  = new Audio();
-               //var src2  = document.createElement("source");
-               //src2.type = "audio/mpeg";
-               //src2.src  = "sounds/laser_1.mp3";
-               //snd2.appendChild(src2);
-               //snd2.play();
-
-              // var audio2 = document.getElementById('laser0');
-               //audio2.play();
+                playSound(getSoundIdByColor(value));
 
               } else {
                 document.getElementById(key).style.opacity = "0.6";
@@ -188,7 +132,7 @@
                 playSound("winner_1");
               } else {
                 gameOverShown = true
-                playSound("game_over_1");
+                playSound("game_over_0");
               }
                 
             } else if (action == MSG_RESTART_GAME){
@@ -257,7 +201,7 @@
       timer = setInterval(function(){
             if (counter === dissapearOrder.length) {
               //When finished
-              playSound("start_game_1");
+              playSound("start_game_0");
               clearInterval(timer);
               const objToSender = 
               {
