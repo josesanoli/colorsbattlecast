@@ -317,23 +317,25 @@
 
     function playSound(htmlSound) {
       console.log('function play: ', htmlSound);
-      //const audio = document.querySelector(`audio[id='${e}']`);
-      //if (!audio) return; //stop the function from running all together
-      //audio.currentTime = 0; //rewind to the start
-      var playPromise = document.querySelector("#" +(htmlSound)).play();
-          // In browsers that don’t yet support this functionality,
-          // playPromise won’t be defined.
-          if (playPromise !== undefined) {
-            playPromise.then(function() {
-              // Automatic playback started!
-              console.log('play: ', htmlSound);
-            }).catch(function(error) {
-              // Automatic playback failed.
-              // Show a UI element to let the user manually start //playback.
-              console.log('error: ', htmlSound);
-            });
-          }
-      //audio.play();
+      const audio = document.querySelector("#" +(htmlSound));
+      if (!audio) return; //stop the function from running all together
+      audio.currentTime = 0; //rewind to the start
+      
+      audio.play();
+
+      //var playPromise = document.querySelector("#" +(htmlSound)).play();
+      //    // In browsers that don’t yet support this functionality,
+      //    // playPromise won’t be defined.
+      //    if (playPromise !== undefined) {
+      //      playPromise.then(function() {
+      //        // Automatic playback started!
+      //        console.log('play: ', htmlSound);
+      //      }).catch(function(error) {
+      //        // Automatic playback failed.
+      //        // Show a UI element to let the user manually start //playback.
+      //        console.log('error: ', htmlSound);
+      //      });
+      //    }
     }
 
     function getSoundIdByColor(color) {
