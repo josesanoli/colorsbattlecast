@@ -50,10 +50,11 @@
   hideAllPlayers();
 
   cast.framework.CastReceiverContext.getInstance().setLoggerLevel(cast.framework.LoggerLevel.DEBUG);
-    
+  const context = cast.framework.CastReceiverContext.getInstance();
+  const playerManager = context.getPlayerManager();
+  
     global.onload = function() {
       
-        var context = cast.framework.CastReceiverContext.getInstance();
         
         console.log('starting the receiver application');
         
@@ -219,7 +220,7 @@
                 type: MSG_START_COUNTDOWN,
                 message: MSG_START_GAME
               };
-              var context = cast.framework.CastReceiverContext.getInstance();
+              //var context = cast.framework.CastReceiverContext.getInstance();
               context.sendCustomMessage(CUSTOM_CHANNEL, undefined, objToSender);
               
             } else {
@@ -293,7 +294,7 @@
       //    }
 
       var soundSrc = document.getElementById(htmlSound).src;
-      const playerManager = cast.framework.CastReceiverContext.getInstance().getPlayerManager();
+      
       const loadRequestData = new cast.framework.messages.LoadRequestData();
       loadRequestData.media = new cast.framework.messages.MediaInformation();
       console.log('soundSrc: ', soundSrc);
