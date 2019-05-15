@@ -1,5 +1,5 @@
 (function (global) {
-  
+
   // Messages
   const MSG_GET_GAME_CODE = "get_game_code";
   const MSG_INIT_SCREEN = "init_screen";
@@ -52,278 +52,298 @@
   cast.framework.CastReceiverContext.getInstance().setLoggerLevel(cast.framework.LoggerLevel.DEBUG);
   const context = cast.framework.CastReceiverContext.getInstance();
   const playerManager = context.getPlayerManager();
-  
-    global.onload = function() {
-      
-        
-        console.log('starting the receiver application');
-        
-        context.addCustomMessageListener(CUSTOM_CHANNEL, customEvent => {
-            console.log('addCustomMessageListener:' + customEvent);
-            
-            let action = String(customEvent.data.action);
-            let key = String(customEvent.data.key);
-            let value = String(customEvent.data.value);
 
-            if (action == MSG_GET_GAME_CODE){
-              document.getElementById("players").innerHTML = key;
-              const objToSender = 
-                {
-                  type: action,
-                  message: gameCode.substr(gameCode.length - 4)
-                };
-              context.sendCustomMessage(CUSTOM_CHANNEL, undefined, objToSender);
-          
-            } else if (action == MSG_MIN_CAST_VERSION){
-              document.getElementById("players").innerHTML = key;
-              const objToSender = 
-                {
-                  type: action,
-                  message: MIN_CAST_VERSION
-                };
-              context.sendCustomMessage(CUSTOM_CHANNEL, undefined, objToSender);
-          
-            } else if (action == MSG_INIT_SCREEN){
-              document.getElementById("subtitle").innerHTML = key;
-              document.getElementById("subtitle2").innerHTML = value;
-              gameCode = value;
-            
-            } else if (action == MSG_START_COUNTDOWN){
-              document.getElementById("subtitle").innerHTML = key;
-              document.getElementById("subtitle2").innerHTML = value;
-              countDownStart = true;
-              startCountDown();
-            
-            } else if (action.startsWith(MSG_EDIT_PLAYER)){
-              if (key != ""){
-                document.getElementById(action + "_slot").style.display = "flex";
-                document.getElementById(action + "_name").innerHTML = key;
-                document.getElementById(action + "_color").style.backgroundColor = value;
-                document.getElementById(action + "_score").innerHTML = "0";
-                document.getElementById(action + "_name").style.color = PLAYER_COLOR;
-                document.getElementById(action + "_score").style.color = SCORE_COLOR;
-                if (!countDownStart){
-                  playSound(getSoundIdByColor(value))
-                }
-              } else {
-                document.getElementById(action + "_slot").style.display = "none";
-              }
+  global.onload = function () {
 
-            } else if (action == MSG_SET_TIME){
-              document.getElementById("subtitle").innerHTML = key;
-              document.getElementById("subtitle2").innerHTML = value;
-              if (value == "10"){
-                document.getElementById("subtitle2").style.color = LAST_SECONDS_COLOR;
-                if (!lastTenPlayed){
-                  playSound("last_ten");
-                  lastTenPlayed = true;
-                }
-              } 
-          
-            } else if (action == MSG_UPDATE_SCORE){
-              document.getElementById(key + "_score").innerHTML = value;
-              checkBestScore();
+    console.log('starting the receiver application');
 
-            } else if (action == MSG_CELL_COLOR){
-              if (value != MSG_ALPHA){
-                document.getElementById(key).style.backgroundColor = value;
-                playSound(getSoundIdByColor(value));
+    context.addCustomMessageListener(CUSTOM_CHANNEL, customEvent => {
+      console.log('addCustomMessageListener:' + customEvent);
 
-              } else {
-                document.getElementById(key).style.opacity = "0.6";
-              }
-            
-            } else if (action == MSG_FINISH_SCREEN){
-              document.getElementById("subtitle").innerHTML = key;
-              document.getElementById("subtitle2").innerHTML = value;
-              document.getElementById("subtitle2").style.color = H2_TEXT_COLOR;
-              if (gameOverShown){
-                //Suena este siempre
-                playSound("winner_1");
-              } else {
-                playSound("game_over_0");
-                gameOverShown = true;
-              }
-                
-            } else if (action == MSG_RESTART_GAME){
-              initScreeen();
-              document.getElementById("subtitle").innerHTML = key;
-              document.getElementById("subtitle2").innerHTML = value;
+      let action = String(customEvent.data.action);
+      let key = String(customEvent.data.key);
+      let value = String(customEvent.data.value);
 
-            }
-         
-            //Send message received to device
-            const objToSender = 
-                {
-                  type: 'Action: ' + action,
-                  message: 'Key: ' + key + '. Value: ' + value
-                };
-            context.sendCustomMessage(CUSTOM_CHANNEL, undefined, objToSender);
+      if (action == MSG_GET_GAME_CODE) {
+        document.getElementById("players").innerHTML = key;
+        const objToSender =
+        {
+          type: action,
+          message: gameCode.substr(gameCode.length - 4)
+        };
+        context.sendCustomMessage(CUSTOM_CHANNEL, undefined, objToSender);
 
-        });
-        
-        const options = new cast.framework.CastReceiverOptions();
-        options.customNamespaces = Object.assign({});
-        options.customNamespaces[CUSTOM_CHANNEL] = cast.framework.system.MessageType.JSON;
-        
-        context.start(options);
+      } else if (action == MSG_MIN_CAST_VERSION) {
+        document.getElementById("players").innerHTML = key;
+        const objToSender =
+        {
+          type: action,
+          message: MIN_CAST_VERSION
+        };
+        context.sendCustomMessage(CUSTOM_CHANNEL, undefined, objToSender);
 
-    };
+      } else if (action == MSG_INIT_SCREEN) {
+        document.getElementById("subtitle").innerHTML = key;
+        document.getElementById("subtitle2").innerHTML = value;
+        gameCode = value;
 
-    function initScreeen(){
-      hideAllPlayers();
-      document.getElementById("subtitle").innerHTML = "";
-      document.getElementById("subtitle2").innerHTML = "-";
-      document.getElementById("subtitle2").style.color = H2_TEXT_COLOR;
-      var cellNames = ["B3","C3","C2","B2","A2","A3","A4","B4","C4","D4","D3","D2","D1","C1","B1","A1"]; 
-      var i = 0;
-      for (i = 0; i < cellNames.length; i++) { 
-        var cellKey = "cell" + cellNames[i];
-        document.getElementById(cellKey).style.backgroundColor = DEFAULT_CELL_COLOR;
-        document.getElementById(cellKey).style.opacity = "1.0";
-      }
-      gameOverShown = false;
-      countDownStart = false;
-      lastTenPlayed = false;
-    }
+      } else if (action == MSG_START_COUNTDOWN) {
+        document.getElementById("subtitle").innerHTML = key;
+        document.getElementById("subtitle2").innerHTML = value;
+        playSound("ready_0");
+        countDownStart = true;
+        startCountDown();
 
-    function hideAllPlayers(){
-      var i;
-      for (i = 0; i < 8; i++) { 
-        let slotId = "player_" + i + "_slot";
-        document.getElementById(slotId).style.display = "none";
-        let playerScore = "player_" + i + "_score";
-        let playerName = "player_" + i + "_name";
-        document.getElementById(playerName).style.color = PLAYER_COLOR;
-        document.getElementById(playerName).innerHTML = "-";
-        document.getElementById(playerScore).style.color = SCORE_COLOR;
-        document.getElementById(playerScore).innerHTML = "0";
-      }
-    }
-
-    function startCountDown(){
-      var dissapearOrder = ["C3","B3","B2","C2","D2","D3","D4","C4","B4","A4","A3","A2","A1","B1","C1","D1"]; 
-      var i = 0;
-      for (i = 0; i < dissapearOrder.length; i++) { 
-        var cellKey = "cell" + dissapearOrder[i]
-        document.getElementById(cellKey).style.backgroundColor = COUNTDOWN_CELL_COLOR;
-      }
-
-      var counter = 0,
-      timer = setInterval(function(){
-            if (counter === dissapearOrder.length) {
-              //When finished
-              playSound("start_game_0");
-              clearInterval(timer);
-              const objToSender = 
-              {
-                type: MSG_START_COUNTDOWN,
-                message: MSG_START_GAME
-              };
-              //var context = cast.framework.CastReceiverContext.getInstance();
-              context.sendCustomMessage(CUSTOM_CHANNEL, undefined, objToSender);
-              
-            } else {
-              var cellKey = "cell" + dissapearOrder[counter]
-              document.getElementById(cellKey).style.backgroundColor = DEFAULT_CELL_COLOR;
-              counter++
-            }
-      },400);
-
-    }
-
-    function checkBestScore(){
-      var arr = new Array(8);
-      var i;
-      var maxScore = 0;
-      for (i = 0; i < 8; i++) { 
-        let playerScore = "player_" + i + "_score";
-        arr[i] = parseInt(document.getElementById(playerScore).innerText);
-        if (arr[i] > maxScore){
-          maxScore = arr[i];
-        }
-      } 
-      for (i = 0; i < 8; i++) {
-        let playerScore = "player_" + i + "_score";
-        let playerName = "player_" + i + "_name";
-        if (arr[i] == maxScore && arr[i]>0){
-          document.getElementById(playerName).style.color = BEST_PLAYER_COLOR;
-          document.getElementById(playerScore).style.color = BEST_SCORE_COLOR;
+      } else if (action.startsWith(MSG_EDIT_PLAYER)) {
+        if (key != "") {
+          document.getElementById(action + "_slot").style.display = "flex";
+          document.getElementById(action + "_name").innerHTML = key;
+          document.getElementById(action + "_color").style.backgroundColor = value;
+          document.getElementById(action + "_score").innerHTML = "0";
+          document.getElementById(action + "_name").style.color = PLAYER_COLOR;
+          document.getElementById(action + "_score").style.color = SCORE_COLOR;
+          if (!countDownStart) {
+            playSound(getSoundIdByColor(value))
+          }
         } else {
-          document.getElementById(playerName).style.color = PLAYER_COLOR;
-          document.getElementById(playerScore).style.color = SCORE_COLOR;
+          document.getElementById(action + "_slot").style.display = "none";
         }
-        
-      }
-    }
 
-    function testColorsOnScreen(){
+      } else if (action == MSG_SET_TIME) {
+        document.getElementById("subtitle").innerHTML = key;
+        document.getElementById("subtitle2").innerHTML = value;
+        if (value == "10") {
+          document.getElementById("subtitle2").style.color = LAST_SECONDS_COLOR;
+          if (!lastTenPlayed) {
+            playSound("last_ten_0");
+            lastTenPlayed = true;
+          }
+        }
 
-      document.getElementById("cellA2").style.backgroundColor = cPlayer_0;
-      document.getElementById("cellA1").style.backgroundColor = cPlayer_1;
-      document.getElementById("cellB1").style.backgroundColor = cPlayer_2;
-      document.getElementById("cellC1").style.backgroundColor = cPlayer_3;
-      document.getElementById("cellD1").style.backgroundColor = cPlayer_4;
-      document.getElementById("cellD2").style.backgroundColor = cPlayer_5;
-      document.getElementById("cellD3").style.backgroundColor = cPlayer_6;
-      document.getElementById("cellC3").style.backgroundColor = cPlayer_7;
-      document.getElementById("cellB3").style.backgroundColor = cPlayer_8;
-      document.getElementById("cellA3").style.backgroundColor = cPlayer_9;
-    }
+      } else if (action == MSG_UPDATE_SCORE) {
+        document.getElementById(key + "_score").innerHTML = value;
+        checkBestScore();
 
-    function playSound(htmlSound) {
-      console.log('function play: ', htmlSound);
-      //const audio = document.querySelector("#" +(htmlSound)).src;
-      //if (!audio) return; //stop the function from running all together
-      //audio.currentTime = 0; //rewind to the start
-      //
-      //audio.play();
+      } else if (action == MSG_CELL_COLOR) {
+        if (value != MSG_ALPHA) {
+          document.getElementById(key).style.backgroundColor = value;
+          playSound(getSoundIdByColor(value));
 
-      //var playPromise = document.querySelector("#" +(htmlSound)).play();
-      //    // In browsers that don’t yet support this functionality,
-      //    // playPromise won’t be defined.
-      //    if (playPromise !== undefined) {
-      //      playPromise.then(function() {
-      //        // Automatic playback started!
-      //        console.log('play: ', htmlSound);
-      //      }).catch(function(error) {
-      //        // Automatic playback failed.
-      //        // Show a UI element to let the user manually start //playback.
-      //        console.log('error: ', htmlSound);
-      //      });
-      //    }
+        } else {
+          document.getElementById(key).style.opacity = "0.6";
+        }
 
-      var soundSrc = document.getElementById(htmlSound).src;
-      
-      const loadRequestData = new cast.framework.messages.LoadRequestData();
-      loadRequestData.media = new cast.framework.messages.MediaInformation();
-      console.log('soundSrc: ', soundSrc);
-      loadRequestData.media.contentId = soundSrc;
-      loadRequestData.autoplay = true;
-      playerManager.load(loadRequestData).then(
-	    function() { console.log('Load succeed'); },
-	    function(errorCode) { console.log('Error code: ' + errorCode); }
-	);
-    }
+      } else if (action == MSG_FINISH_SCREEN) {
+        document.getElementById("subtitle").innerHTML = key;
+        document.getElementById("subtitle2").innerHTML = value;
+        document.getElementById("subtitle2").style.color = H2_TEXT_COLOR;
+        if (gameOverShown) {
+          var winnerSound = "winner_0";
+          var randomValue = Math.random();
+          if (randomValue < 0.3) {
+            winnerSound =  "winner_1";
+          } else  if (randomValue > 0.7){
+            winnerSound =  "winner_2";
+          }
+          playSound(winnerSound);
 
-    function getSoundIdByColor(color) {
+        } else {
+          var gameOverSound = "game_over_0";
+          if (Math.random() >= 0.5) {
+            gameOverSound = "game_over_1";
+          }
+          playSound(gameOverSound);
+          gameOverShown = true;
 
-      var playerSound = "laser_8";
-      switch(color){
-        case cPlayer_0: playerSound = "laser_10"; break;
-        case cPlayer_1: playerSound = "laser_11"; break;
-        case cPlayer_2: playerSound = "laser_12"; break;
-        case cPlayer_3: playerSound = "laser_13"; break;
-        case cPlayer_4: playerSound = "laser_14"; break;
-        case cPlayer_5: playerSound = "laser_15"; break;
-        case cPlayer_6: playerSound = "laser_16"; break;
-        case cPlayer_7: playerSound = "laser_17"; break;
-        case cPlayer_8: playerSound = "laser_8"; break;     
-        case cPlayer_9: playerSound = "laser_9"; break;
-        case DEFAULT_CELL_COLOR: playerSound = "clear_0"; break;
+        }
+
+      } else if (action == MSG_RESTART_GAME) {
+        initScreeen();
+        document.getElementById("subtitle").innerHTML = key;
+        document.getElementById("subtitle2").innerHTML = value;
+
       }
 
-      return playerSound;
+      //Send message received to device
+      const objToSender =
+      {
+        type: 'Action: ' + action,
+        message: 'Key: ' + key + '. Value: ' + value
+      };
+      context.sendCustomMessage(CUSTOM_CHANNEL, undefined, objToSender);
+
+    });
+
+    const options = new cast.framework.CastReceiverOptions();
+    options.customNamespaces = Object.assign({});
+    options.customNamespaces[CUSTOM_CHANNEL] = cast.framework.system.MessageType.JSON;
+
+    context.start(options);
+
+  };
+
+  function initScreeen() {
+    hideAllPlayers();
+    document.getElementById("subtitle").innerHTML = "";
+    document.getElementById("subtitle2").innerHTML = "-";
+    document.getElementById("subtitle2").style.color = H2_TEXT_COLOR;
+    var cellNames = ["B3", "C3", "C2", "B2", "A2", "A3", "A4", "B4", "C4", "D4", "D3", "D2", "D1", "C1", "B1", "A1"];
+    var i = 0;
+    for (i = 0; i < cellNames.length; i++) {
+      var cellKey = "cell" + cellNames[i];
+      document.getElementById(cellKey).style.backgroundColor = DEFAULT_CELL_COLOR;
+      document.getElementById(cellKey).style.opacity = "1.0";
     }
+    gameOverShown = false;
+    countDownStart = false;
+    lastTenPlayed = false;
+  }
+
+  function hideAllPlayers() {
+    var i;
+    for (i = 0; i < 8; i++) {
+      let slotId = "player_" + i + "_slot";
+      document.getElementById(slotId).style.display = "none";
+      let playerScore = "player_" + i + "_score";
+      let playerName = "player_" + i + "_name";
+      document.getElementById(playerName).style.color = PLAYER_COLOR;
+      document.getElementById(playerName).innerHTML = "-";
+      document.getElementById(playerScore).style.color = SCORE_COLOR;
+      document.getElementById(playerScore).innerHTML = "0";
+    }
+  }
+
+  function startCountDown() {
+    var dissapearOrder = ["C3", "B3", "B2", "C2", "D2", "D3", "D4", "C4", "B4", "A4", "A3", "A2", "A1", "B1", "C1", "D1"];
+    var i = 0;
+    for (i = 0; i < dissapearOrder.length; i++) {
+      var cellKey = "cell" + dissapearOrder[i]
+      document.getElementById(cellKey).style.backgroundColor = COUNTDOWN_CELL_COLOR;
+    }
+
+    var counter = 0,
+      timer = setInterval(function () {
+        if (counter === dissapearOrder.length) {
+          //When finished
+          playSound("start_game_0");
+          clearInterval(timer);
+          const objToSender =
+          {
+            type: MSG_START_COUNTDOWN,
+            message: MSG_START_GAME
+          };
+          context.sendCustomMessage(CUSTOM_CHANNEL, undefined, objToSender);
+
+        } else {
+          var cellKey = "cell" + dissapearOrder[counter]
+          document.getElementById(cellKey).style.backgroundColor = DEFAULT_CELL_COLOR;
+          counter++
+        }
+      }, 400);
+
+  }
+
+  function checkBestScore() {
+    var arr = new Array(8);
+    var i;
+    var maxScore = 0;
+    for (i = 0; i < 8; i++) {
+      let playerScore = "player_" + i + "_score";
+      arr[i] = parseInt(document.getElementById(playerScore).innerText);
+      if (arr[i] > maxScore) {
+        maxScore = arr[i];
+      }
+    }
+    for (i = 0; i < 8; i++) {
+      let playerScore = "player_" + i + "_score";
+      let playerName = "player_" + i + "_name";
+      if (arr[i] == maxScore && arr[i] > 0) {
+        document.getElementById(playerName).style.color = BEST_PLAYER_COLOR;
+        document.getElementById(playerScore).style.color = BEST_SCORE_COLOR;
+      } else {
+        document.getElementById(playerName).style.color = PLAYER_COLOR;
+        document.getElementById(playerScore).style.color = SCORE_COLOR;
+      }
+
+    }
+  }
+
+  function testColorsOnScreen() {
+
+    document.getElementById("cellA2").style.backgroundColor = cPlayer_0;
+    document.getElementById("cellA1").style.backgroundColor = cPlayer_1;
+    document.getElementById("cellB1").style.backgroundColor = cPlayer_2;
+    document.getElementById("cellC1").style.backgroundColor = cPlayer_3;
+    document.getElementById("cellD1").style.backgroundColor = cPlayer_4;
+    document.getElementById("cellD2").style.backgroundColor = cPlayer_5;
+    document.getElementById("cellD3").style.backgroundColor = cPlayer_6;
+    document.getElementById("cellC3").style.backgroundColor = cPlayer_7;
+    document.getElementById("cellB3").style.backgroundColor = cPlayer_8;
+    document.getElementById("cellA3").style.backgroundColor = cPlayer_9;
+
+    document.getElementById("cellB2").style.backgroundColor = cPlayer_4;
+    document.getElementById("cellC2").style.backgroundColor = cPlayer_5;
+    document.getElementById("cellD4").style.backgroundColor = cPlayer_6;
+    document.getElementById("cellC4").style.backgroundColor = cPlayer_7;
+    document.getElementById("cellB4").style.backgroundColor = cPlayer_8;
+    document.getElementById("cellA4").style.backgroundColor = cPlayer_9;
+  }
+
+  function playSound(htmlSound) {
+    //console.log('function play: ', htmlSound);
+    var soundSrc = document.getElementById(htmlSound).src;
+    console.log('soundSrc: ', soundSrc);
+
+    const loadRequestData = new cast.framework.messages.LoadRequestData();
+    loadRequestData.media = new cast.framework.messages.MediaInformation();
+    loadRequestData.media.contentId = soundSrc;
+    loadRequestData.autoplay = true;
+
+    playerManager.load(loadRequestData).then(
+      function () { console.log('Load succeed'); },
+      function (errorCode) { console.log('Error code: ' + errorCode); }
+    );
+
+    //const audio = document.querySelector("#" +(htmlSound)).src;
+    //if (!audio) return; //stop the function from running all together
+    //audio.currentTime = 0; //rewind to the start
+    //
+    //audio.play();
+
+    //var playPromise = document.querySelector("#" +(htmlSound)).play();
+    //    // In browsers that don’t yet support this functionality,
+    //    // playPromise won’t be defined.
+    //    if (playPromise !== undefined) {
+    //      playPromise.then(function() {
+    //        // Automatic playback started!
+    //        console.log('play: ', htmlSound);
+    //      }).catch(function(error) {
+    //        // Automatic playback failed.
+    //        // Show a UI element to let the user manually start //playback.
+    //        console.log('error: ', htmlSound);
+    //      });
+    //    }
+
+  }
+
+  function getSoundIdByColor(color) {
+
+    var playerSound = "laser_0";
+    switch (color) {
+      case cPlayer_0: playerSound = "laser_0"; break;
+      case cPlayer_1: playerSound = "laser_1"; break;
+      case cPlayer_2: playerSound = "laser_2"; break;
+      case cPlayer_3: playerSound = "laser_3"; break;
+      case cPlayer_4: playerSound = "laser_4"; break;
+      case cPlayer_5: playerSound = "laser_5"; break;
+      case cPlayer_6: playerSound = "laser_6"; break;
+      case cPlayer_7: playerSound = "laser_7"; break;
+      case cPlayer_8: playerSound = "laser_8"; break;
+      case cPlayer_9: playerSound = "laser_9"; break;
+      case DEFAULT_CELL_COLOR: playerSound = "clear_0"; break;
+    }
+
+    return playerSound;
+  }
 
 }(this));
