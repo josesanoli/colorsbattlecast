@@ -270,24 +270,24 @@
 
   function testColorsOnScreen() {
 
-    document.getElementById("cellA1").style.backgroundColor = cPlayer_1;
-    document.getElementById("cellB1").style.backgroundColor = cPlayer_7;
-    document.getElementById("cellC1").style.backgroundColor = DEFAULT_CELL_COLOR;
-    document.getElementById("cellD1").style.backgroundColor = cPlayer_4;
+    document.getElementById("cellA1").style.backgroundColor = cPlayer_0;
+    document.getElementById("cellB1").style.backgroundColor = cPlayer_1;
+    document.getElementById("cellC1").style.backgroundColor = cPlayer_2;
+    document.getElementById("cellD1").style.backgroundColor = cPlayer_3;
 
-    document.getElementById("cellA2").style.backgroundColor = cPlayer_5;
-    document.getElementById("cellB2").style.backgroundColor = COUNTDOWN_CELL_COLOR;
-    document.getElementById("cellC2").style.backgroundColor = cPlayer_0;
-    document.getElementById("cellD2").style.backgroundColor = DEFAULT_CELL_COLOR;
+    document.getElementById("cellA2").style.backgroundColor = cPlayer_9;
+    document.getElementById("cellB2").style.backgroundColor = DEFAULT_CELL_COLOR;
+    document.getElementById("cellC2").style.backgroundColor = DEFAULT_CELL_COLOR;
+    document.getElementById("cellD2").style.backgroundColor = cPlayer_4;
 
-    document.getElementById("cellA3").style.backgroundColor = DEFAULT_CELL_COLOR;
-    document.getElementById("cellB3").style.backgroundColor = cPlayer_8;
-    document.getElementById("cellC3").style.backgroundColor = cPlayer_3;
-    document.getElementById("cellD3").style.backgroundColor = cPlayer_6;
+    document.getElementById("cellA3").style.backgroundColor = cPlayer_8;
+    document.getElementById("cellB3").style.backgroundColor = DEFAULT_CELL_COLOR;
+    document.getElementById("cellC3").style.backgroundColor = DEFAULT_CELL_COLOR;
+    document.getElementById("cellD3").style.backgroundColor = cPlayer_5;
 
-    document.getElementById("cellA4").style.backgroundColor = cPlayer_9;
-    document.getElementById("cellB4").style.backgroundColor = DEFAULT_CELL_COLOR;
-    document.getElementById("cellC4").style.backgroundColor = cPlayer_2;
+    document.getElementById("cellA4").style.backgroundColor = COUNTDOWN_CELL_COLOR;
+    document.getElementById("cellB4").style.backgroundColor = cPlayer_7;
+    document.getElementById("cellC4").style.backgroundColor = cPlayer_6;
     document.getElementById("cellD4").style.backgroundColor = COUNTDOWN_CELL_COLOR;
 
 
