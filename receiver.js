@@ -285,11 +285,10 @@
     document.getElementById("cellC3").style.backgroundColor = DEFAULT_CELL_COLOR;
     document.getElementById("cellD3").style.backgroundColor = cPlayer_5;
 
-    document.getElementById("cellA4").style.backgroundColor = COUNTDOWN_CELL_COLOR;
+    document.getElementById("cellA4").style.backgroundColor = DEFAULT_CELL_COLOR;
     document.getElementById("cellB4").style.backgroundColor = cPlayer_7;
     document.getElementById("cellC4").style.backgroundColor = cPlayer_6;
-    document.getElementById("cellD4").style.backgroundColor = COUNTDOWN_CELL_COLOR;
-
+    document.getElementById("cellD4").style.backgroundColor = DEFAULT_CELL_COLOR;
 
   }
 
