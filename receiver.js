@@ -49,7 +49,7 @@
   testColorsOnScreen();
   hideAllPlayers();
 
-  cast.framework.CastReceiverContext.getInstance().setLoggerLevel(cast.framework.LoggerLevel.DEBUG);
+  //cast.framework.CastReceiverContext.getInstance().setLoggerLevel(cast.framework.LoggerLevel.DEBUG);
   const context = cast.framework.CastReceiverContext.getInstance();
   const playerManager = context.getPlayerManager();
 
@@ -308,31 +308,11 @@
       function (errorCode) { console.log('Error code: ' + errorCode); }
     );
 
-    //const audio = document.querySelector("#" +(htmlSound)).src;
-    //if (!audio) return; //stop the function from running all together
-    //audio.currentTime = 0; //rewind to the start
-    //
-    //audio.play();
-
-    //var playPromise = document.querySelector("#" +(htmlSound)).play();
-    //    // In browsers that don’t yet support this functionality,
-    //    // playPromise won’t be defined.
-    //    if (playPromise !== undefined) {
-    //      playPromise.then(function() {
-    //        // Automatic playback started!
-    //        console.log('play: ', htmlSound);
-    //      }).catch(function(error) {
-    //        // Automatic playback failed.
-    //        // Show a UI element to let the user manually start //playback.
-    //        console.log('error: ', htmlSound);
-    //      });
-    //    }
-
   }
 
   function getSoundIdByColor(color) {
 
-    var playerSound = "laser_0";
+    var playerSound = "laser_13";
     switch (color) {
       case cPlayer_0: playerSound = "laser_0"; break;
       case cPlayer_1: playerSound = "laser_1"; break;
@@ -346,7 +326,6 @@
       case cPlayer_9: playerSound = "laser_9"; break;
       case DEFAULT_CELL_COLOR: playerSound = "clear_0"; break;
     }
-    console.log('getSoundIdByColor: ', playerSound);
     return playerSound;
   }
 
