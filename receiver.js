@@ -345,7 +345,7 @@
       case cPlayer_9: playerSound = "laser_9"; break;
       case DEFAULT_CELL_COLOR: playerSound = "clear_0"; break;
     }
-
+    console.log('getSoundIdByColor: ', playerSound);
     return playerSound;
   }
 
