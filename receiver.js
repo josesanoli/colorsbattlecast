@@ -300,7 +300,7 @@
     const loadRequestData = new cast.framework.messages.LoadRequestData();
     loadRequestData.media = new cast.framework.messages.MediaInformation();
     loadRequestData.media.contentId = soundSrc;
-    loadRequestData.media.streamType = media.BUFFERED; 
+    loadRequestData.media.streamType = "BUFFERED"; 
     loadRequestData.autoplay = true;
 
     playerManager.load(loadRequestData).then(
